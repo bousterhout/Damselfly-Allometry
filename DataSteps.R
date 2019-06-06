@@ -20,6 +20,7 @@ sites <- read.csv("Data/AllLakes_SiteInfo_2016.csv")
 colnames(sites)[1] <- "FM_Name"
 sites[,c("Photo1", "Photo2", "Photo3")] <- NULL
 sites$Region <- ifelse(sites$Latitude > 38, "NorthCentral", "SouthCentral")
+sites$Region <- as.factor(sites$Region)
 
 #Calculate count of all fish caught in each lake  
 fish <- read.csv("Data/AllLakes_Fish_2016.csv") #Read in fish data
@@ -54,6 +55,9 @@ prey1$Prey.DensityL <- prey1$Prey.CPU/6.95 #Mean prey per sample divided by volu
 
 diversity <- setDT(prey)[, .(count = uniqueN(Taxa)), by = Lake] #This step requires the data.table package
 colnames(diversity)[1] <- "FM_Name"
+diversity$FM_Name <- as.character(diversity$FM_Name)
+diversity$FM_Name <- ifelse(diversity$FM_Name == "LockandDamPond", "LockAndDamPond", diversity$FM_Name) #Fix naming inconsistencies in the data file
+diversity$FM_Name <- as.factor(diversity$FM_Name)
 prey <- join(prey1, diversity, by = "FM_Name", type = "left")
 colnames(prey)[5] <- "Prey.Diversity"
 
@@ -122,12 +126,15 @@ abun$Rel.Ischnura <- abun$Ischnura / abun$Competitor
 abun$Rel.Lestes <- abun$Lestes / abun$Competitor
 
 #Format Date so R recognizes it
-abun$Date <- ifelse(nchar(abun$Date) < 9,
-                    as.Date(abun$Date, format="%m.%d.%y"),
-                    as.Date(abun$Date, format="%m/%d/%Y"))
-                                    
+abun.per <- subset(abun, nchar(abun$Date) < 9)
+abun.per$Date <- as.Date(abun.per$Date, format = "%m.%d.%y")
 
-rm(abun.round, meas, meas.counts, other.abun)  
+abun.slash <- subset(abun, nchar(abun$Date) > 8)
+abun.slash$Date <- as.Date(abun.slash$Date, format = "%m/%d/%Y")
+
+abun <- rbind(abun.per, abun.slash)
+
+rm(abun.round, meas, meas.counts, other.abun, abun.per, abun.slash)  
 
 #Add in mean water measures
 water <- read.csv("Data/AllLakes_WaterQuality_2016.csv")
@@ -160,27 +167,27 @@ df3 <- join(df2, chla, by = "FM_Name", type = "left")
 df4 <- join(df3, prey, by = "FM_Name", type = "left")
 df5 <- join(abun, df4, by = "FM_Name", type = "left")
 
-covar <- df5[,c('Date', 'FM_Name', 'Sampling.Round', 'Region', 'Fish.Densitym2', 'Shoot.Countm2',
-             'Prey.CPU', 'Prey.Diversity', 'Competitorm2', 'Conductivity', 
-              'Salinity', 'pH', 'chla.ug.L')]
-
-#Clean up, remove all dataframes except df
-rm(list= ls()[!(ls() %in% c("covar"))])
-
 ##################################################################
 #Add in measurements of individual larvae for AR, MI, WI, and MN
 ##################################################################
 
 meas <- read.csv('Data/AllLakes_Measurements_2016.csv')
-meas[8:13] <- NULL                          #Delete empty columns
+meas[,c(2,8:13)] <- NULL                          #Delete empty columns
 
 meas$Species <- revalue(meas$Species, c("ENDI" = "ENEX"))
-colnames(meas)[7] <- 'Sampling.Round'
+colnames(meas)[6] <- 'Sampling.Round'
 meas$Sampling.Round <- as.factor(meas$Sampling.Round)
 
-df <- join(meas, covar, by = c('FM_Name', 'Sampling.Round'))
+df <- join(meas, df5, by = c('FM_Name', 'Sampling.Round'))
 
-rm(list= ls()[!(ls() %in% c('df'))])
+df <- df[,c('Lake', 'Species', 'HW', 'OWPL', 'Sampling.Round',
+            'Date', 'Region', 'Fish.Densitym2', 'Shoot.Countm2', 'Prey.CPU',
+            'Prey.Diversity', 'Competitorm2', 'Conductivity', 'Salinity', 'pH',
+            'chla.ug.L')]
+
+covar <- df5
+
+rm(list= ls()[!(ls() %in% c('df','covar'))])
 
 ################
 # VT and NH
@@ -210,7 +217,8 @@ diversity <- setDT(prey)[, .(count = uniqueN(Taxa)), by = Lake]
 
 nh.env <- nh.env[,c(1,5:7,15, 16, 17, 21, 22, 23, 28, 66)] #uS = cond, salinity = ppt, H20 PC1, No TDS
  
-nh.env$Competitor <- nh.env$Total.Enallagma + nh.env$Total.ischnura + nh.env$Total.Lestes + (10*nh.env$dragonfly.abundance)
+nh.env$Competitor <- nh.env$Total.Enallagma + nh.env$Total.ischnura + 
+                       nh.env$Total.Lestes + (10*nh.env$dragonfly.abundance)
 nh.env$Competitorm2 <- nh.env$Competitor/10
 
 colnames(nh.env)[6] <- "Conductivity"
@@ -222,21 +230,21 @@ nh.env$Fish.Densitym2 <- nh.env$Fish.Densitym2/(4.5*1.5)
 colnames(nh.env)[12] <- "Prey.CPU"
 
 nh.env <-join(nh.env, diversity)
-colnames(nh.env)[10] <-'Diversity'
+colnames(nh.env)[15] <-'Prey.Diversity'
 
 nh <- join(nh, nh.env)
 
-nh <- subset(nh, species!='Ischnura' & species!='Lestes' & species!='Nehalennia' & species!='Dragonflies' & species!='Argia')
-colnames(df.E)[8] <- "Species"
-colnames(df.E)[3] <- "Date"
-colnames(df.E)[4] <- "SamplingRound"
-df.E[,2] <- NULL
-df.E$Region <- as.factor(rep("NH", nrow(df.E)))
-df.E$Parasite.CPU <- rep(NA, nrow(df.E))
-df.E <- df.E[,c(1,2,7,4,5,1,3,13,12,14,17,19,15,18,9,8,11,10,16)]
-colnames(df.E)[6] <- "FM_Name"
+nh <- subset(nh, species!='Ischnura' & species!='Lestes' & species!='Nehalennia' 
+             & species!='Dragonflies' & species!='Argia')
+colnames(nh)[7] <- "Species"
+nh$Region <- as.factor(rep("NE", nrow(nh)))
 
-df <- rbind(df,df.E)
+nh <- nh[,c('Lake', 'Species', 'HW', 'OWPL', 'Sampling.Round',
+            'Date', 'Region', 'Fish.Densitym2', 'Shoot.Countm2', 'Prey.CPU',
+            'Prey.Diversity', 'Competitorm2', 'Conductivity', 'Salinity', 'pH',
+            'chla.ug.L')]
+
+df <- rbind(df, nh)
 
 rm(list= ls()[!(ls() %in% c('df'))])
 
@@ -244,7 +252,7 @@ rm(list= ls()[!(ls() %in% c('df'))])
 # Collapse water quality to single axis
 ########################################
 
-nh.env[,c(2:4,11,13)] <- NULL
+df[,c(2:4,11,13)] <- NULL
 
 h2o <- nh.env[,c(2:4)]
 
