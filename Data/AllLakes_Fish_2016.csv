@@ -1,0 +1,484 @@
+SiteVisit_Record_ID_Fish,Rep,Taxon,Image,Count,Avg.Fish.Count.BySpecies
+PalmatierLake_MI_08/01/2016,1,Bluegill,1043-1045,3,5
+PalmatierLake_MI_08/01/2016,1,Minnow,1046,14,21.5
+PalmatierLake_MI_08/01/2016,1,Bass,1047,1,1.5
+PalmatierLake_MI_08/01/2016,1,Black-stripe minnow,"1042, 1044",2,22.5
+PalmatierLake_MI_08/01/2016,2,Bluegill,"1049, 1048",10,5
+PalmatierLake_MI_08/01/2016,2,Ornate minnow,"1051,1051",1,1
+PalmatierLake_MI_08/01/2016,3,Black-stripe minnow,"1053, 1052, 1056",43,22.5
+PalmatierLake_MI_08/01/2016,3,Minnow,1054-1055,29,21.5
+PalmatierLake_MI_08/01/2016,3,Bluegill,1055-1056,2,5
+PalmatierLake_MI_08/01/2016,3,Bass,1057,2,1.5
+SpringLakeEast_WI_07/30/2016,1,Bluegill,1030,8,6.5
+SpringLakeEast_WI_07/30/2016,1,Minis,1031,2,2
+SpringLakeEast_WI_07/30/2016,1,Shinny speckled,1032,1,1
+SpringLakeEast_WI_07/30/2016,2,Bass,1033,1,1
+SpringLakeEast_WI_07/30/2016,3,Bluegill,1039,5,6.5
+SpringLakeEast_WI_07/30/2016,3,Darker blue,1038,4,4
+SpringLakeEast_WI_07/30/2016,3,Sunfish,1040,1,1
+SpringLakeEast_WI_07/30/2016,3,Bass,1041,1,1
+LakeNopawan_WI_07/29/2016,1,Red gill,1019,4,13.66667
+LakeNopawan_WI_07/29/2016,2,Red gill,1021,12,13.66667
+LakeNopawan_WI_07/29/2016,2,Bass,1020,1,1
+LakeNopawan_WI_07/29/2016,3,Red gill,1023,25,13.66667
+LakeNopawan_WI_07/29/2016,3,Silver minnows,1022,2,2
+SpringLake_WI_07/28/2016,1,Dace,1000-1001,3,4.5
+SpringLake_WI_07/28/2016,1,Blue gill/Red gill,1002-1003,26,32
+SpringLake_WI_07/28/2016,1,Black-stripe minnow,1004-1005,6,16.33333
+SpringLake_WI_07/28/2016,1,Minnow,1004-1005,2,2
+SpringLake_WI_07/28/2016,2,Black stripe,1008-1010,1,1
+SpringLake_WI_07/28/2016,2,Black-stripe minnow,1009-1010,39,16.33333
+SpringLake_WI_07/28/2016,2,Blue gill/Red gill,1006-1007,38,32
+SpringLake_WI_07/28/2016,3,Bluegill,1013,7,7
+SpringLake_WI_07/28/2016,3,Red gill,1014,32,32
+SpringLake_WI_07/28/2016,3,Black-stripe minnow,1011,4,16.33333
+SpringLake_WI_07/28/2016,3,Dace,1012,6,4.5
+PatrickLake_WI_07/27/2016,1,Bluegill/perch,989-991,63,52
+PatrickLake_WI_07/27/2016,2,Bluegill/perch,992-993,41,52
+PatrickLake_WI_07/27/2016,3,Sunfish,994-995,35,35
+MissionLake_WI_07/26/2016,1,Red gill,0978,1,10.66667
+MissionLake_WI_07/26/2016,2,Red gill,0979,28,10.66667
+MissionLake_WI_07/26/2016,3,Bluegill,0981,2,2
+MissionLake_WI_07/26/2016,3,Red gill,"0980, 0982",3,10.66667
+CodyLake_MN_07/10/2016,1,Crappie,806,1,1
+CodyLake_MN_07/10/2016,1,Bass,"806, 807",2,2
+CodyLake_MN_07/10/2016,1,Minis,807,2,24.33333
+CodyLake_MN_07/10/2016,1,Minnow,"806, 808",1,1.5
+CodyLake_MN_07/10/2016,2,Crappie,"810, 811",1,1
+CodyLake_MN_07/10/2016,2,Silver minnows,815,2,2
+CodyLake_MN_07/10/2016,2,perch/walleye,"812, 813",8,8
+CodyLake_MN_07/10/2016,2,Minis,814,39,24.33333
+CodyLake_MN_07/10/2016,3,Crappie,"816, 817",1,1
+CodyLake_MN_07/10/2016,3,Silver minnows,"818, 819",2,2
+CodyLake_MN_07/10/2016,3,Minnow,"818, 819",2,1.5
+CodyLake_MN_07/10/2016,3,Minis,"820, 821",32,24.33333
+SpurzemLake_MN_07/11/2016,1,Sunfish,"0825,0826,0827,0829, 0831",9,9
+SpurzemLake_MN_07/11/2016,1,Bass,"0825, 0826, 0828",3,2
+SpurzemLake_MN_07/11/2016,1,Bluegill,0830,1,1
+SpurzemLake_MN_07/11/2016,1,Perch,"0831, 0832, 0835",12,12
+SpurzemLake_MN_07/11/2016,1,Crappie,0831,1,1
+SpurzemLake_MN_07/11/2016,1,Minis,"0833, 0834",51,37.33333
+SpurzemLake_MN_07/11/2016,1,Minnow,"0833, 0834",6,6
+SpurzemLake_MN_07/11/2016,2,Perch/Sunfish,0837,10,10
+SpurzemLake_MN_07/11/2016,2,Minis,"0839, 0942",32,37.33333
+SpurzemLake_MN_07/11/2016,2,Gold Bellies,"0838, 0841",3,3
+SpurzemLake_MN_07/11/2016,2,Bluegill,0840,1,1
+SpurzemLake_MN_07/11/2016,2,Crappie,0843,1,1
+SpurzemLake_MN_07/11/2016,3,Bass,0844-0846,1,2
+SpurzemLake_MN_07/11/2016,3,Crappie,"845, 846",1,1
+SpurzemLake_MN_07/11/2016,3,Minis,"844, 845",29,37.33333
+LuraLake_MN_07/09/2016,1,Perch,"790, 791",1,1
+LuraLake_MN_07/09/2016,1,Bass,"788, 789, 792",10,11
+LuraLake_MN_07/09/2016,2,Minis,"796, 797",2,16.5
+LuraLake_MN_07/09/2016,2,Bass,"793, 794, 795",9,11
+LuraLake_MN_07/09/2016,3,Bass,"798, 799",14,11
+LuraLake_MN_07/09/2016,3,Minis,"800, 801",31,16.5
+MollieLake_MN_07/13/2016,1,Minis,863,1,1
+MollieLake_MN_07/13/2016,2,Bass,Joys Camera,1,1
+MollieLake_MN_07/13/2016,3,NA,NA,0,0
+SpectacleLake_MN_07/12/2016,1,Minnow,0850-0852,3,5.5
+SpectacleLake_MN_07/12/2016,1,Perch,0853-0854,1,1
+SpectacleLake_MN_07/12/2016,2,Minnow,0855-0856,8,5.5
+SpectacleLake_MN_07/12/2016,3,Shiner,0857-0858,3,3
+RockLake_MN_07/14/2016,1,Crappie,870,1,1
+RockLake_MN_07/14/2016,2,NA,NA,0,0
+RockLake_MN_07/14/2016,3,Bass,871,2,2
+RockLake_MN_07/14/2016,3,Perch,872,10,6
+RockLake_MN_07/14/2016,3,Perch,873,2,6
+PickerelLake_MN_07/16/2016,1,Perch,875,3,3
+PickerelLake_MN_07/16/2016,2,Minis,877,2,2
+PickerelLake_MN_07/16/2016,3,NA,NA,0,0
+MudLake_WI_07/17/2016,1,Perch,"886, 889",13,9.66667
+MudLake_WI_07/17/2016,1,Minis,887,4,15.66667
+MudLake_WI_07/17/2016,1,Bass,887,3,2.33333
+MudLake_WI_07/17/2016,1,Crappie,888,1,1
+MudLake_WI_07/17/2016,2,Perch,"890, 898",13,9.66667
+MudLake_WI_07/17/2016,2,Minnow,"898, 891, 892, 894",47,24.5
+MudLake_WI_07/17/2016,2,Minis,"897, 891, 892, 894",35,15.66667
+MudLake_WI_07/17/2016,2,Bullhead,"893, 894",1,1
+MudLake_WI_07/17/2016,2,Crappie,895,1,1
+MudLake_WI_07/17/2016,2,Bass,896,1,2.33333
+MudLake_WI_07/17/2016,3,Perch,902,3,9.66667
+MudLake_WI_07/17/2016,3,Bass,901,3,2.33333
+MudLake_WI_07/17/2016,3,Minis,899,8,15.66667
+MudLake_WI_07/17/2016,3,Minnow,900,2,24.5
+DiamondLake_WI_07/19/2016,1,Minis,916,2,2
+DiamondLake_WI_07/19/2016,2,Pike,"918, 919",1,1
+DiamondLake_WI_07/19/2016,2,Bass,917,2,1.5
+DiamondLake_WI_07/19/2016,3,Bluegill,921,2,2
+DiamondLake_WI_07/19/2016,3,Catfish/Bullhead,922,4,4
+DiamondLake_WI_07/19/2016,3,Bass,920,1,1.5
+GreenLake_WI_07/18/2016,1,Bass,"903, 904",6,4
+GreenLake_WI_07/18/2016,1,Bluegill/perch,"905, 906",13,18
+GreenLake_WI_07/18/2016,1,Minis,"903, 904",5,4.66667
+GreenLake_WI_07/18/2016,2,Sunfish,907,1,1
+GreenLake_WI_07/18/2016,2,Bluegill/perch,"907, 908",2,18
+GreenLake_WI_07/18/2016,2,Bass,908,1,4
+GreenLake_WI_07/18/2016,2,Minis,908,3,4.66667
+GreenLake_WI_07/18/2016,3,Bass,910,5,4
+GreenLake_WI_07/18/2016,3,Minis,910,6,4.66667
+GreenLake_WI_07/18/2016,3,Bluegill/perch,"911, 909",39,18
+LoonLake_WI_07/20/2016,1,Bass,"926, 927",1,1
+LoonLake_WI_07/20/2016,1,Minis,"926, 927",2,1.33333
+LoonLake_WI_07/20/2016,2,Bluegill,"928, 929",1,1
+LoonLake_WI_07/20/2016,2,Minis,"928, 929",1,1.33333
+LoonLake_WI_07/20/2016,3,Bass,934,1,1
+LoonLake_WI_07/20/2016,3,Minis,934,1,1.33333
+ClearwaterLake_MI_07/21/2016,1,Minis,940,3,2
+ClearwaterLake_MI_07/21/2016,1,Sunfish,938,1,1
+ClearwaterLake_MI_07/21/2016,1,Bass,940,1,1
+ClearwaterLake_MI_07/21/2016,1,Perch,939,3,3
+ClearwaterLake_MI_07/21/2016,2,Bluegill,"941, 942",2,2
+ClearwaterLake_MI_07/21/2016,3,Minis,"943, 944",1,2
+ClearwaterLake_MI_07/21/2016,3,Bass,"943, 944",1,1
+LakeSaintKathryn_MI_07/23/2016,1,Bluegill,951,1,1
+LakeSaintKathryn_MI_07/23/2016,1,Bass,953,1,1
+LakeSaintKathryn_MI_07/23/2016,2,silverside minnow,952,10,6
+LakeSaintKathryn_MI_07/23/2016,3,silverside minnow,954,2,6
+MargaretLake_WI_07/24/2016,1,NA,"NA
+",0,0
+MargaretLake_WI_07/24/2016,2,silverside minnow,"955, 956",4,4
+MargaretLake_WI_07/24/2016,2,Red gill,957,1,2
+MargaretLake_WI_07/24/2016,3,Red gill,958,3,2
+WiscobeeLake_WI_07/25/2016,1,Perch,971,3,3
+WiscobeeLake_WI_07/25/2016,1,Minis,971,1,1.5
+WiscobeeLake_WI_07/25/2016,2,Minis,"972, 973",2,1.5
+WiscobeeLake_WI_07/25/2016,3,Speckled,"972, 973",6,6
+WiscobeeLake_WI_07/25/2016,3,Crappie,974,1,1
+OrganLake_MS_07/29/2016,1,NA,NA,0,0
+OrganLake_MS_07/29/2016,2,Budda-belly minnow,"768, 769",1,1
+OrganLake_MS_07/29/2016,3,fat-belly minnow,"770, 771, 780",20,20
+OrganLake_MS_07/29/2016,3,Bluegill,773-776,6,6
+OrganLake_MS_07/29/2016,3,Red-ear Sunfish,777-779,3,3
+LakeLoakfoama_MS_07/28/2016,1,NA,NA,0,0
+LakeLoakfoama_MS_07/28/2016,2,Shiny Blues,760,3,3
+LakeLoakfoama_MS_07/28/2016,2,Little Blues,"763, 764",17,17
+LakeLoakfoama_MS_07/28/2016,3,Dark with blue sheen,762,1,1
+LakeLoakfoama_MS_07/28/2016,3,fat-belly minnow,762,1,1
+LakeLoakfoama_MS_07/28/2016,3,Blunt face,0762,1,1
+TomBaileyLake_MS_07/27/2016,1,Bluegill,"732, 737",9,9
+TomBaileyLake_MS_07/27/2016,1,Black stripe,"737, 736, 731, 739",6,3.33333
+TomBaileyLake_MS_07/27/2016,1,Red gill,"735, 734, 730, 739",23,19
+TomBaileyLake_MS_07/27/2016,1,Dace,"733, 729",11,14.66667
+TomBaileyLake_MS_07/27/2016,1,big bass,738,1,1
+TomBaileyLake_MS_07/27/2016,2,Red gill,741,15,19
+TomBaileyLake_MS_07/27/2016,2,Black stripe,740,2,3.33333
+TomBaileyLake_MS_07/27/2016,2,Dace,742,6,14.66667
+TomBaileyLake_MS_07/27/2016,3,Black stripe,743,2,3.33333
+TomBaileyLake_MS_07/27/2016,3,Dace,"746, 747, 745, 744",27,14.66667
+LakeBogueHoma_MS_06/26/2016,1,Dace,704,3,3.5
+LakeBogueHoma_MS_06/26/2016,1,Bass/Black stripe,703,3,3
+LakeBogueHoma_MS_06/26/2016,1,Shiny Blues,"701, 702",16,9.75
+LakeBogueHoma_MS_06/26/2016,2,Catfish,712,3,3
+LakeBogueHoma_MS_06/26/2016,2,Black stripe,707,5,3.5
+LakeBogueHoma_MS_06/26/2016,2,Sunfish,705,5,5
+LakeBogueHoma_MS_06/26/2016,2,Darkies,706,2,2
+LakeBogueHoma_MS_06/26/2016,2,Shiny Blues,708,16,9.75
+LakeBogueHoma_MS_06/26/2016,2,fat-belly minnow,"709, 710",4,2.5
+LakeBogueHoma_MS_06/26/2016,2,Speckled minnow,711,3,3
+LakeBogueHoma_MS_06/26/2016,3,Dace,713,4,3.5
+LakeBogueHoma_MS_06/26/2016,3,Shiny Blues,715,5,9.75
+LakeBogueHoma_MS_06/26/2016,3,Bluegill,719,1,1
+LakeBogueHoma_MS_06/26/2016,3,fat-belly minnow,714,1,2.5
+LakeBogueHoma_MS_06/26/2016,3,Red gill,716,2,2
+LakeBogueHoma_MS_06/26/2016,3,Shiny Blues,718,2,9.75
+LakeBogueHoma_MS_06/26/2016,3,Black stripe,717,2,3.5
+LincolnLake_MS_06/24/2016,1,Minnow,"680, 681",7,4.66667
+LincolnLake_MS_06/24/2016,2,Minnow,"684, 685",4,4.66667
+LincolnLake_MS_06/24/2016,2,Bluegill/Sunfish,686,1,1
+LincolnLake_MS_06/24/2016,3,Minnow,687,3,4.66667
+HolmesSP_MS_06/28/2016,1,Bass/Black stripe,662,1,1
+HolmesSP_MS_06/28/2016,1,Shiny Blues,"663, 664, 667",25,14
+HolmesSP_MS_06/28/2016,1,Bluegill/Sunfish,666,1,1
+HolmesSP_MS_06/28/2016,2,Bass,670,1,3
+HolmesSP_MS_06/28/2016,2,Shiner,669,10,6
+HolmesSP_MS_06/28/2016,3,Bass,"671, 673",5,3
+HolmesSP_MS_06/28/2016,3,Shiny Blues,672,3,14
+HolmesSP_MS_06/28/2016,3,Sunfish,675,1,1
+HolmesSP_MS_06/28/2016,3,Shiner,"674, 675",2,6
+HorseshoeLake_MS_06/22/2016,1,Gold Speckle,649,4,7
+HorseshoeLake_MS_06/22/2016,1,Bass/Black stripe,648,1,2.33333
+HorseshoeLake_MS_06/22/2016,1,Shiny Blues,647,2,8.5
+HorseshoeLake_MS_06/22/2016,1,Minnow,648,1,1
+HorseshoeLake_MS_06/22/2016,1,Small see-through,649,1,1
+HorseshoeLake_MS_06/22/2016,2,Bass/Black stripe,650,5,2.33333
+HorseshoeLake_MS_06/22/2016,2,Shiny Blues,654,15,8.5
+HorseshoeLake_MS_06/22/2016,2,Gold Speckle,655,10,7
+HorseshoeLake_MS_06/22/2016,3,Bluegill/Sunfish,656,1,1
+HorseshoeLake_MS_06/22/2016,3,Bass/Black stripe,657,1,2.33333
+LakeBillWaller_MS_07/25/2016,1,Shiny Blues,"692, 693",1,4.66667
+LakeBillWaller_MS_07/25/2016,2,Black stripe,694,3,3
+LakeBillWaller_MS_07/25/2016,2,Shiny Blues,695,4,4.66667
+LakeBillWaller_MS_07/25/2016,3,Shiny Blues,699,9,4.66667
+LakeBillWaller_MS_07/25/2016,3,fat-belly minnow,697,10,10
+LakeBillWaller_MS_07/25/2016,3,Black stripe bass,696,5,5
+LakeBillWaller_MS_07/25/2016,3,dace minnows,700,3,3
+CorneyLake_LA_06/05/2016,1,Pickerel,"587, 588",1,1.66667
+CorneyLake_LA_06/05/2016,1,Gold Speckled,"589, 590",2,1.66667
+CorneyLake_LA_06/05/2016,1,purplish belly,"589, 590",2,2
+CorneyLake_LA_06/05/2016,1,Bass,"591, 592",2,1.5
+CorneyLake_LA_06/05/2016,1,shiny's,"591, 592",3,16
+CorneyLake_LA_06/05/2016,2,Pickerel,594,3,1.66667
+CorneyLake_LA_06/05/2016,2,Shiny's,597,9,16
+CorneyLake_LA_06/05/2016,2,Red gill,598,1,1
+CorneyLake_LA_06/05/2016,2,Gold Speckled,598,1,1.66667
+CorneyLake_LA_06/05/2016,3,shiny's,601-604,36,16
+CorneyLake_LA_06/05/2016,3,Pickerel,606,1,1.66667
+CorneyLake_LA_06/05/2016,3,Gold Speckled,606,2,1.66667
+CorneyLake_LA_06/05/2016,3,Minnow,606,2,2
+CorneyLake_LA_06/05/2016,3,Black stripe,608-609,1,1
+CorneyLake_LA_06/05/2016,3,Bass,608-609,1,1.5
+CorneyLake_LA_06/05/2016,3,Bluegill,608-609,1,1
+StuartLake_LA_05/31/2016,1,Black stripe,504,1,1.66667
+StuartLake_LA_05/31/2016,1,Bluegill,505,4,2.66667
+StuartLake_LA_05/31/2016,1,Minnow,503,1,1
+StuartLake_LA_05/31/2016,2,Black stripe,"506, 508",1,1.66667
+StuartLake_LA_05/31/2016,2,Bluegill,"506, 507",2,2.66667
+StuartLake_LA_05/31/2016,2,other big one,"506, 507",1,1
+StuartLake_LA_05/31/2016,2,tiny guys,"506, 508",2,2
+StuartLake_LA_05/31/2016,2,small guys,"506, 508",4,4
+StuartLake_LA_05/31/2016,3,Minnow,"509, 511",1,1
+StuartLake_LA_05/31/2016,3,Black stripe,"509, 510",3,1.66667
+StuartLake_LA_05/31/2016,3,Bluegill,"509, 513",2,2.66667
+StuartLake_LA_05/31/2016,3,Big eye,"509, 512",3,3
+ChathamLake_LA_06/04/2016,1,Black stripe,574,1,1
+ChathamLake_LA_06/04/2016,2,Red-ear Sunfish,575,1,1
+ChathamLake_LA_06/04/2016,2,Bluegill,576,2,2
+ChathamLake_LA_06/04/2016,3,Black fish,577-578,4,4
+ChathamLake_LA_06/04/2016,3,Red gill,579-580,10,10
+RickEvansWMA_AR_05/23/2016,1,Black stripe,415,5,5
+RickEvansWMA_AR_05/23/2016,1,little guy,416,3,2.5
+RickEvansWMA_AR_05/23/2016,2,Black stripe,419,5,5
+RickEvansWMA_AR_05/23/2016,2,little guy,419,2,2.5
+RickEvansWMA_AR_05/23/2016,3,NA,NA,0,0
+MonticelloLake_AR_06/07/2016,1,NA,NA,0,0
+MonticelloLake_AR_06/07/2016,2,NA,NA,0,0
+MonticelloLake_AR_06/07/2016,3,NA,NA,0,0
+WhiteOakLake_AR_05/24/2016,1,(blank),405,3,1.66667
+WhiteOakLake_AR_05/24/2016,1,(blank),404,2,1.66667
+WhiteOakLake_AR_05/24/2016,1,(blank),406,2,1.66667
+WhiteOakLake_AR_05/24/2016,2,(blank),407,1,1.66667
+WhiteOakLake_AR_05/24/2016,3,(blank),410,1,1.66667
+WhiteOakLake_AR_05/24/2016,3,(blank),409,1,1.66667
+BlackBayouLake_LA_05/03/2016,1,Bluegill,615,2,4.66667
+BlackBayouLake_LA_05/03/2016,1,shiny blues,515,5,5
+BlackBayouLake_LA_05/03/2016,1,Bass,"515,518",3,2.5
+BlackBayouLake_LA_05/03/2016,1,Minnow,518,7,6
+BlackBayouLake_LA_05/03/2016,2,Orange Tail,"523,526",7,7
+BlackBayouLake_LA_05/03/2016,2,Gold Speckled,"524,525",2,16
+BlackBayouLake_LA_05/03/2016,2,Orange Fin,"526,527",1,1
+BlackBayouLake_LA_05/03/2016,2,Minnow,"526,527",2,6
+BlackBayouLake_LA_05/03/2016,2,Bluegill,"526,527",2,4.66667
+BlackBayouLake_LA_05/03/2016,3,Gold Speckled,"534,535,557",30,16
+BlackBayouLake_LA_05/03/2016,3,Catfish,543,2,2
+BlackBayouLake_LA_05/03/2016,3,Bass,"544,556",2,2.5
+BlackBayouLake_LA_05/03/2016,3,Bluegill,"541,533",10,4.66667
+BlackBayouLake_LA_05/03/2016,3,Big eye,"545,546",3,3
+BlackBayouLake_LA_05/03/2016,3,Red gill,"539,546",17,17
+BlackBayouLake_LA_05/03/2016,3,Minnow,"541,546",9,6
+BlackBayouLake_LA_05/03/2016,3,Stripy little,"556,567,566",4,4
+BlackBayouLake_LA_05/03/2016,3,Black speckled,"556, 566,567",4,4
+BlackBayouLake_LA_05/03/2016,3,Gar,559,1,1
+LakeChicotSP_LA_5/29/2016,1,Bass,467,5,9.66667
+LakeChicotSP_LA_5/29/2016,1,Purplish,470,5,5
+LakeChicotSP_LA_5/29/2016,1,Shiner,468,2,2
+LakeChicotSP_LA_5/29/2016,2,Bluegill,"471,482",21,6.5
+LakeChicotSP_LA_5/29/2016,2,Bass,471-473,16,9.66667
+LakeChicotSP_LA_5/29/2016,2,Gold Speckled,"471,475",1,1
+LakeChicotSP_LA_5/29/2016,2,Bluegill,477,1,6.5
+LakeChicotSP_LA_5/29/2016,2,Darky,477,1,1
+LakeChicotSP_LA_5/29/2016,2,Pickerel,481,1,1
+LakeChicotSP_LA_5/29/2016,2,Little spotty,487,1,1
+LakeChicotSP_LA_5/29/2016,3,Bluegill,489,3,6.5
+LakeChicotSP_LA_5/29/2016,3,Bass,491,8,9.66667
+LakeChicotSP_LA_5/29/2016,3,Bluegill,493,1,6.5
+LakeChicotSP_LA_5/29/2016,3,see-thrus,493,4,4
+OzarkCityLake_AR_7/19/2016,1,Sunfish,147,4,4
+OzarkCityLake_AR_7/19/2016,2,Sunfish,148,4,4
+OzarkCityLake_AR_7/19/2016,2,Bass,148,3,2
+OzarkCityLake_AR_7/19/2016,3,NA,NA,0,0
+OzarkCityLake_AR_7/19/2016,4,Bass,149,1,2
+HorseheadLake_AR_7/19/2016,1,Mosquito Fish,164,6,5.5
+HorseheadLake_AR_7/19/2016,1,Sunfish,164,3,23.4
+HorseheadLake_AR_7/19/2016,1,Sunfish,166,6,23.4
+HorseheadLake_AR_7/19/2016,2,Sunfish,167,9,23.4
+HorseheadLake_AR_7/19/2016,2,Mosquito Fish,167,8,5.5
+HorseheadLake_AR_7/19/2016,2,Sunfish,168,86,23.4
+HorseheadLake_AR_7/19/2016,2,Mosquito Fish,168,6,5.5
+HorseheadLake_AR_7/19/2016,3,Sunfish,169,13,23.4
+HorseheadLake_AR_7/19/2016,3,Mosquito Fish,169,2,5.5
+BobbKiddLake_AR_7/14/2016,1,Sunfish,126,16,35.33333
+BobbKiddLake_AR_7/14/2016,2,Sunfish,127,43,35.33333
+BobbKiddLake_AR_7/14/2016,2,Bass,127,4,2.5
+BobbKiddLake_AR_7/14/2016,3,Sunfish,128-129,47,35.33333
+BobbKiddLake_AR_7/14/2016,3,Bass,128-130,1,2.5
+BobbKiddLake_AR_7/14/2016,3,Shiner,128-131,2,2
+LockAndDamPond_AR_7/21/2016,1,Sunfish,191-195,95,104.66667
+LockAndDamPond_AR_7/21/2016,1,Mosquito Fish,191-195,7,6.66667
+LockAndDamPond_AR_7/21/2016,2,Sunfish,196-197,149,104.66667
+LockAndDamPond_AR_7/21/2016,2,Mosquito Fish,196-197,6,6.66667
+LockAndDamPond_AR_7/21/2016,3,Sunfish,198-199,70,104.66667
+LockAndDamPond_AR_7/21/2016,3,Mosquito Fish,198-199,7,6.66667
+LakeSequoyah_AR_8/15/2016,1,Sunfish,511,11,32.85714
+LakeSequoyah_AR_8/15/2016,1,Shiner,511,7,2.5
+LakeSequoyah_AR_8/15/2016,1,Ozark Minnow,511,7,5
+LakeSequoyah_AR_8/15/2016,2,Sunfish,514,44,32.85714
+LakeSequoyah_AR_8/15/2016,2,Minnow,514,2,2
+LakeSequoyah_AR_8/15/2016,2,Shiner,514,1,2.5
+LakeSequoyah_AR_8/15/2016,2,Sunfish,515,48,32.85714
+LakeSequoyah_AR_8/15/2016,2,Shiner,515,1,2.5
+LakeSequoyah_AR_8/15/2016,2,Bass,516,1,1
+LakeSequoyah_AR_8/15/2016,2,Sunfish,516,1,32.85714
+LakeSequoyah_AR_8/15/2016,2,Sunfish,517,54,32.85714
+LakeSequoyah_AR_8/15/2016,2,Shiner,517,1,2.5
+LakeSequoyah_AR_8/15/2016,2,Sunfish,518,41,32.85714
+LakeSequoyah_AR_8/15/2016,2,Bass,518,1,1
+LakeSequoyah_AR_8/15/2016,2,Darter,518,1,1
+LakeSequoyah_AR_8/15/2016,3,Sunfish,519,31,32.85714
+LakeSequoyah_AR_8/15/2016,3,Bass,519,1,1
+LakeSequoyah_AR_8/15/2016,3,Ozark Minnow,519,3,5
+LakeWilson_AR_7/11/2016,1,Sunfish,93,10,20.33333
+LakeWilson_AR_7/11/2016,2,Sunfish,94,24,20.33333
+LakeWilson_AR_7/11/2016,2,Bass,94,1,1
+LakeWilson_AR_7/11/2016,3,Sunfish,95-96,27,20.33333
+LakeLincoln_AR_7/14/2016,1,Sunfish,109,14,40.66667
+LakeLincoln_AR_7/14/2016,2,Sunfish,110,30,40.66667
+LakeLincoln_AR_7/14/2016,2,Catfish,110,2,2.5
+LakeLincoln_AR_7/14/2016,2,Minnow,110,2,2
+LakeLincoln_AR_7/14/2016,3,Sunfish,111,78,40.66667
+LakeLincoln_AR_7/14/2016,3,Catfish,111,3,2.5
+LakeLincoln_AR_7/14/2016,3,Bass,111,1,1
+CharlestonLake_AR_7/21/2016,1,Sunfish,216-217,11,6
+CharlestonLake_AR_7/21/2016,1,Darter,216-217,4,4
+CharlestonLake_AR_7/21/2016,2,Sunfish,218,3,6
+CharlestonLake_AR_7/21/2016,3,Sunfish,219-220,4,6
+GreenwoodLake_AR_7/25/2016,1,Sunfish,253,6,5.66667
+GreenwoodLake_AR_7/25/2016,1,Mosquito Fish,254,1,1.66667
+GreenwoodLake_AR_7/25/2016,2,Sunfish,255,2,5.66667
+GreenwoodLake_AR_7/25/2016,2,Bass,255,1,1
+GreenwoodLake_AR_7/25/2016,2,Mosquito Fish,255,2,1.66667
+GreenwoodLake_AR_7/25/2016,3,Sunfish,256-258,9,5.66667
+GreenwoodLake_AR_7/25/2016,3,Bass,256-258,1,1
+GreenwoodLake_AR_7/25/2016,3,Mosquito Fish,256-258,2,1.66667
+BoonevilleLake_AR_7/25/2016,1,Sunfish,239,1,4
+BoonevilleLake_AR_7/25/2016,1,Bass,239,1,1
+BoonevilleLake_AR_7/25/2016,2,NA,NA,0,0
+BoonevilleLake_AR_7/25/2016,3,Sunfish,240,7,4
+BoonevilleLake_AR_7/25/2016,4,NA,NA,0,0
+ParisReservoir_AR_8/11/2016,1,Shiner,473,6,2.66667
+ParisReservoir_AR_8/11/2016,2,Bass,476,3,2
+ParisReservoir_AR_8/11/2016,2,Sunfish,476,1,1.5
+ParisReservoir_AR_8/11/2016,2,Shiner,476,1,2.66667
+ParisReservoir_AR_8/11/2016,3,Sunfish,478,2,1.5
+ParisReservoir_AR_8/11/2016,3,Shiner,478,1,2.66667
+ParisReservoir_AR_8/11/2016,3,Bass,478,1,2
+EngineerLake_AR_8/4/2016,1,Sunfish,340-341,40,33.5
+EngineerLake_AR_8/4/2016,2,Sunfish,342,20,33.5
+EngineerLake_AR_8/4/2016,2,Bass,342,1,1
+EngineerLake_AR_8/4/2016,3,Sunfish,343,49,33.5
+EngineerLake_AR_8/4/2016,3,Sunfish,344,25,33.5
+EngineerLake_AR_8/4/2016,3,Mosquito Fish,344,1,1
+LakeWedington_AR_8/3/2016,1,Sunfish,318,6,13.33333
+LakeWedington_AR_8/3/2016,2,Sunfish,320,32,13.33333
+LakeWedington_AR_8/3/2016,2,Bass,320,1,1
+LakeWedington_AR_8/3/2016,3,Sunfish,321,2,13.33333
+CrystalLake_AR_8/1/2016,1,Sunfish,275,9,5
+CrystalLake_AR_8/1/2016,2,Bass,276,1,1
+CrystalLake_AR_8/1/2016,2,Sunfish,276,1,5
+CrystalLake_AR_8/1/2016,3,NA,NA,0,0
+SiloamSpringsLake_AR_8/1/2016,1,Shiner,292,3,3
+SiloamSpringsLake_AR_8/1/2016,1,Logperch,292,1,1
+SiloamSpringsLake_AR_8/1/2016,2,Sunfish,296,3,3
+SiloamSpringsLake_AR_8/1/2016,3,Sunfish,297,3,3
+SiloamSpringsLake_AR_8/1/2016,3,Mosquito Fish,297,1,1
+LakeLeatherwood_AR_8/8/2016,1,Sunfish,392-393,50,29.33333
+LakeLeatherwood_AR_8/8/2016,1,Bass,392-393,1,1
+LakeLeatherwood_AR_8/8/2016,1,Darter,392-393,2,2
+LakeLeatherwood_AR_8/8/2016,2,Sunfish,394,20,29.33333
+LakeLeatherwood_AR_8/8/2016,2,Mosquito Fish,394,1,1
+LakeLeatherwood_AR_8/8/2016,3,Sunfish,395,18,29.33333
+LakeFayetteville_AR_8/8/2016,1,Sunfish,416-417,50,38
+LakeFayetteville_AR_8/8/2016,2,Sunfish,418,17,38
+LakeFayetteville_AR_8/8/2016,2,Mosquito Fish,418,5,4
+LakeFayetteville_AR_8/8/2016,3,Sunfish,419,38,38
+LakeFayetteville_AR_8/8/2016,3,Mosquito Fish,419,3,4
+LakeFayetteville_AR_8/8/2016,3,Sunfish,420,56,38
+LakeFayetteville_AR_8/8/2016,3,Sunfish,421,29,38
+LakePrairieGrove_AR_8/10/2016,1,Bass,435,1,2.7
+LakePrairieGrove_AR_8/10/2016,1,Mosquito Fish,435,11,3.66667
+LakePrairieGrove_AR_8/10/2016,1,Sunfish,435,58,69.15385
+LakePrairieGrove_AR_8/10/2016,1,Mosquito Fish,436,3,3.66667
+LakePrairieGrove_AR_8/10/2016,1,Sunfish,436,29,69.15385
+LakePrairieGrove_AR_8/10/2016,2,Sunfish,437,52,69.15385
+LakePrairieGrove_AR_8/10/2016,2,Bass,437,2,2.7
+LakePrairieGrove_AR_8/10/2016,2,Mosquito Fish,437,4,3.66667
+LakePrairieGrove_AR_8/10/2016,2,Mosquito Fish,438,4,3.66667
+LakePrairieGrove_AR_8/10/2016,2,Bass,438,7,2.7
+LakePrairieGrove_AR_8/10/2016,2,Sunfish,438,88,69.15385
+LakePrairieGrove_AR_8/10/2016,2,Bass,439,1,2.7
+LakePrairieGrove_AR_8/10/2016,2,Sunfish,439,86,69.15385
+LakePrairieGrove_AR_8/10/2016,2,Mosquito Fish,439,4,3.66667
+LakePrairieGrove_AR_8/10/2016,2,Bass,440,2,2.7
+LakePrairieGrove_AR_8/10/2016,2,Sunfish,440,31,69.15385
+LakePrairieGrove_AR_8/10/2016,2,Mosquito Fish,441,3,3.66667
+LakePrairieGrove_AR_8/10/2016,2,Sunfish,441,35,69.15385
+LakePrairieGrove_AR_8/10/2016,2,Inland Silverside,442-443,1,1
+LakePrairieGrove_AR_8/10/2016,2,Sunfish,442-443,49,69.15385
+LakePrairieGrove_AR_8/10/2016,2,Bass,442-443,5,2.7
+LakePrairieGrove_AR_8/10/2016,3,Bass,446,3,2.7
+LakePrairieGrove_AR_8/10/2016,3,Sunfish,446,130,69.15385
+LakePrairieGrove_AR_8/10/2016,3,Mosquito Fish,446,1,3.66667
+LakePrairieGrove_AR_8/10/2016,3,Mosquito Fish,447,1,3.66667
+LakePrairieGrove_AR_8/10/2016,3,Sunfish,447,141,69.15385
+LakePrairieGrove_AR_8/10/2016,3,Bass,447,2,2.7
+LakePrairieGrove_AR_8/10/2016,3,Bass,448,1,2.7
+LakePrairieGrove_AR_8/10/2016,3,Mosquito Fish,448,2,3.66667
+LakePrairieGrove_AR_8/10/2016,3,Sunfish,448,126,69.15385
+LakePrairieGrove_AR_8/10/2016,3,Sunfish,449,41,69.15385
+LakePrairieGrove_AR_8/10/2016,3,Bass,450,3,2.7
+LakePrairieGrove_AR_8/10/2016,3,Sunfish,450,33,69.15385
+CoveLake_AR_8/11/2016,1,Sunfish,494,1,1
+CoveLake_AR_8/11/2016,2,NA,NA,0,0
+CoveLake_AR_8/11/2016,3,NA,NA,0,0
+DarbyLake_AR_8/4/2016,1,Sunfish,369-370,32,53.83333
+DarbyLake_AR_8/4/2016,1,Mosquito Fish,369-370,1,1
+DarbyLake_AR_8/4/2016,2,Bass,371,1,1
+DarbyLake_AR_8/4/2016,2,Sunfish,371,40,53.83333
+DarbyLake_AR_8/4/2016,2,Sunfish,372,63,53.83333
+DarbyLake_AR_8/4/2016,2,Sunfish,373,42,53.83333
+DarbyLake_AR_8/4/2016,3,Sunfish,374,66,53.83333
+DarbyLake_AR_8/4/2016,3,Sunfish,375,80,53.83333
+IvanLake_LA_5/25/2016,1,Bass,424,2,5.66667
+IvanLake_LA_5/25/2016,2,Catfish,431,1,1
+IvanLake_LA_5/25/2016,2,Bass,427-428,7,5.66667
+IvanLake_LA_5/25/2016,2,Shiner,427-429,4,7.5
+IvanLake_LA_5/25/2016,2,Bluegill,426,1,3
+IvanLake_LA_5/25/2016,3,Bass,437-338,8,5.66667
+IvanLake_LA_5/25/2016,3,Shiner,437-438,11,7.5
+IvanLake_LA_5/25/2016,3,Bluegill,437-438,5,3
+IvanLake_LA_5/25/2016,3,Perch,436,1,1
+GrandLake_LA_5/30/2016,1,Bluegill,494,1,3.5
+GrandLake_LA_5/30/2016,2,NA,NA,0,0
+GrandLake_LA_5/30/2016,3,Gold Speckled,497,1,1
+GrandLake_LA_5/30/2016,3,Bluegill,495-499,6,3.5
+SabineWMA_LA_5/28/2016,1,Minnow,,7,16.5
+SabineWMA_LA_5/28/2016,1,Spot fin,,5,7
+SabineWMA_LA_5/28/2016,1,Shiner,,7,5
+SabineWMA_LA_5/28/2016,2,Minnow,,26,16.5
+SabineWMA_LA_5/28/2016,2,Bass,,7,4
+SabineWMA_LA_5/28/2016,2,Shiner,,3,5
+SabineWMA_LA_5/28/2016,2,Rainbow,,1,1
+SabineWMA_LA_5/28/2016,2,Big eye,,1,1
+SabineWMA_LA_5/28/2016,2,Spot fin,,3,7
+SabineWMA_LA_5/28/2016,3,Spot fin,,13,7
+SabineWMA_LA_5/28/2016,3,Gar,,2,2
+SabineWMA_LA_5/28/2016,3,Bass,,1,4
+SabineWMA_LA_5/28/2016,3,Rainbow,,1,1
+MerrisachLake_AR_6/8/2016,1,Bass,"617,616",3,2.5
+MerrisachLake_AR_6/8/2016,1,Minnow,619-620,1,1
+MerrisachLake_AR_6/8/2016,1,"bluish, little",618,1,1
+MerrisachLake_AR_6/8/2016,2,Shiner,621-623,3,3
+MerrisachLake_AR_6/8/2016,3,"bluish, little ","624, 629",7,7
+MerrisachLake_AR_6/8/2016,3,Bass,625,2,2.5
+MerrisachLake_AR_6/8/2016,3,"Minnow, red gill",626,4,4
+MerrisachLake_AR_6/8/2016,3,"Minnow, fat belly",627-628,2,2
