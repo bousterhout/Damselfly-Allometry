@@ -1,6 +1,6 @@
 #############
 # Data steps
-# 9.25.17
+# 6.6.19
 # BHO
 #############
 
@@ -180,12 +180,13 @@ meas$Sampling.Round <- as.factor(meas$Sampling.Round)
 
 df <- join(meas, df5, by = c('FM_Name', 'Sampling.Round'))
 
-df <- df[,c('Lake', 'Species', 'HW', 'OWPL', 'Sampling.Round',
+df <- df[,c('FM_Name', 'Species', 'HW', 'OWPL', 'Sampling.Round',
             'Date', 'Region', 'Fish.Densitym2', 'Shoot.Countm2', 'Prey.CPU',
             'Prey.Diversity', 'Competitorm2', 'Conductivity', 'Salinity', 'pH',
             'chla.ug.L')]
 
-covar <- df5
+covar <- df5[, c("FM_Name", "pH", "Conductivity", "Salinity")]
+colnames(covar)[1] <- "FM_Name" 
 
 rm(list= ls()[!(ls() %in% c('df','covar'))])
 
@@ -244,32 +245,58 @@ nh <- nh[,c('Lake', 'Species', 'HW', 'OWPL', 'Sampling.Round',
             'Prey.Diversity', 'Competitorm2', 'Conductivity', 'Salinity', 'pH',
             'chla.ug.L')]
 
+colnames(nh)[1] <- 'FM_Name'
+colnames(nh.env)[1] <- 'FM_Name'
+
 df <- rbind(df, nh)
 
-rm(list= ls()[!(ls() %in% c('df'))])
+h2o <- rbind(covar, nh.env[,c(1,5:7)])
+h2o <- h2o[!duplicated(h2o$FM_Name), ]  #Remove duplicates
+
+rm(list= ls()[!(ls() %in% c('df', 'h2o'))])
 
 ########################################
 # Collapse water quality to single axis
 ########################################
 
-df[,c(2:4,11,13)] <- NULL
+h2o.no.name <- h2o[,-1]
 
-h2o <- nh.env[,c(2:4)]
-
-h2o.pca <- prcomp(h2o,
+h2o.pca <- prcomp(h2o.no.name,
                   center = TRUE,
                   scale. = TRUE) 
 
-plot(h2o.pca, type="l")
-summary(h2o.pca)
-print(h2o.pca)
+# plot(h2o.pca, type="l")
+# summary(h2o.pca)
+# print(h2o.pca)
 
 loadings <- h2o$rotation
-h2o.pca <- predict(h2o.pca, newdata = h2o) 
-run.pca <- as.data.frame(h2o.pca)
-run.pca <- subset(run.pca, select=c(1))
+h2o.pca <- predict(h2o.pca, newdata = h2o.no.name) 
+h2o.pca <- as.data.frame(h2o.pca)
+h2o.pca <- subset(h2o.pca, select=c(1))
 
-nh.env <- cbind(nh.env,run.pca)
-colnames(nh.env)[10] <- 'H2O.PC1'
+h2o <- cbind(h2o[,1], h2o.pca)
+colnames(h2o) <- c('FM_Name', 'H2O.PC1')
 
+df <- plyr::join(df, h2o, by = 'FM_Name')
+
+############################
+# Add in Lat and Long
+############################
+
+#Imputed mean NE lat for Pinnacle
+coords <- read.csv("Data/Site_Coords.csv")
+df <- join(df, coords[1:3], by = "FM_Name")
+
+nh <- subset(df, Region == "NE")
+
+df$Lat <- ifelse(is.na(df$Lat), 
+                  mean(nh$Lat, na.rm = TRUE),
+                  df$Lat)
+
+df$Long <- ifelse(is.na(df$Long), 
+                  mean(nh$Long, na.rm = TRUE),
+                  df$Long)
+
+
+rm(list= ls()[!(ls() %in% c('df'))])
 
