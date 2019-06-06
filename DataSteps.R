@@ -5,14 +5,11 @@
 #############
 
 #Functions
-
+source("Functions.R")
 
 #Packages
-library(reshape2)
-library(plyr)
-library(data.table)
-
-
+packages <- c("reshape2", "plyr", "data.table")
+package.check(packages)
 
 ############################################
 # Summarize covariates for AR, MI, WI, and MN
@@ -136,14 +133,14 @@ rm(abun.round, meas, meas.counts, other.abun)
 water <- read.csv("Data/AllLakes_WaterQuality_2016.csv")
 
 #Get mean of 3 samples
-water$WaterTemp <- (water$WaterTemp_Rep1 + water$WaterTemp_Rep2 + water$WaterTemp_Rep3) / 3
-water$DO <- (water$DO_Rep1 + water$DO_Rep2 + water$DO_Rep3) / 3
-water$DO.percent <- (water$DO.percent_Rep1 + water$DO.percent_Rep2 + water$DO.percent_Rep3) / 3
-water$DO.ppm <- (water$DO.ppm_Rep1 + water$DO.ppm_Rep2 + water$DO.ppm_Rep3) / 3
+#water$WaterTemp <- (water$WaterTemp_Rep1 + water$WaterTemp_Rep2 + water$WaterTemp_Rep3) / 3
+#water$DO <- (water$DO_Rep1 + water$DO_Rep2 + water$DO_Rep3) / 3
+#water$DO.percent <- (water$DO.percent_Rep1 + water$DO.percent_Rep2 + water$DO.percent_Rep3) / 3
+#water$DO.ppm <- (water$DO.ppm_Rep1 + water$DO.ppm_Rep2 + water$DO.ppm_Rep3) / 3
 water$Conductivity <- (water$Conductivity_Rep1 + water$Conductivity_Rep2 + water$Conductivity_Rep3) / 3
-water$SPC <- (water$SPC_Rep1 + water$SPC_Rep2 + water$SPC_Rep3) / 3
+#water$SPC <- (water$SPC_Rep1 + water$SPC_Rep2 + water$SPC_Rep3) / 3
 water$Salinity <- (water$Salinity_Rep1 + water$Salinity_Rep2 + water$Salinity_Rep3) / 3
-water$TDS <- (water$TDS_Rep1 + water$TDS_Rep2 + water$TDS_Rep3) / 3
+#water$TDS <- (water$TDS_Rep1 + water$TDS_Rep2 + water$TDS_Rep3) / 3
 water$pH <- (water$pH_Rep1 + water$pH_Rep2 + water$pH_Rep3) / 3
 
 water$FM_Name <- as.factor(sapply(strsplit(as.character(water$SiteVisit_Record_ID_WaterQuality),"_"),'[',1)) #Create name column to join by later
@@ -163,28 +160,27 @@ df3 <- join(df2, chla, by = "FM_Name", type = "left")
 df4 <- join(df3, prey, by = "FM_Name", type = "left")
 df5 <- join(abun, df4, by = "FM_Name", type = "left")
 
-df <- df5[,c('Date', 'FM_Name', 'Sampling.Round', 'Region', 'Fish.Densitym2', 'Shoot.Countm2',
-             'Prey.CPU', 'Prey.Diversity', 'Competitorm2', 'DO', 'DO.percent',
-             'DO.ppm', 'Conductivity', 'SPC', 'Salinity', 'TDS', 'pH', 'chla.ug.L')]
+covar <- df5[,c('Date', 'FM_Name', 'Sampling.Round', 'Region', 'Fish.Densitym2', 'Shoot.Countm2',
+             'Prey.CPU', 'Prey.Diversity', 'Competitorm2', 'Conductivity', 
+              'Salinity', 'pH', 'chla.ug.L')]
 
 #Clean up, remove all dataframes except df
-rm(list= ls()[!(ls() %in% c("df"))])
+rm(list= ls()[!(ls() %in% c("covar"))])
 
 ##################################################################
 #Add in measurements of individual larvae for AR, MI, WI, and MN
 ##################################################################
 
-meas<-read.csv('Data/AllLakes_Measurements_2016.csv')
-meas[8:13]<-NULL                          #Delete empty columns
+meas <- read.csv('Data/AllLakes_Measurements_2016.csv')
+meas[8:13] <- NULL                          #Delete empty columns
 
-meas$Species<-revalue(meas$Species, c("ENDI" = "ENEX"))
+meas$Species <- revalue(meas$Species, c("ENDI" = "ENEX"))
 colnames(meas)[7] <- 'Sampling.Round'
 meas$Sampling.Round <- as.factor(meas$Sampling.Round)
 
-df <- join(meas, df, by = c('FM_Name', 'Sampling.Round'))
+df <- join(meas, covar, by = c('FM_Name', 'Sampling.Round'))
 
 rm(list= ls()[!(ls() %in% c('df'))])
-
 
 ################
 # VT and NH
@@ -195,55 +191,62 @@ nh$HW <- as.numeric(as.character(nh$HW))
 nh$OWPL <- as.numeric(as.character(nh$OWPL))
 nh$TL <- as.numeric(as.character(nh$TL))
 
-nh[,c(4,6,10,11,12)]<-NULL
-cor.test(nh$OWPL, nh$TL)
-cor.test(nh$OWPL, nh$HW)
+nh[,c(2,4,6,10,11,12)] <- NULL
 
+nh$sample.date <- as.Date(nh$sample.date, format="%m/%d/%Y")
+colnames(nh)[c(2,3)] <- c("Date", "Sampling.Round")
+nh$Sampling.Round <- as.factor(nh$Sampling.Round)
 
-# nh.s<-nh[,c(7:9,13)]
-# nh.s<-subset(nh.s, !is.na(OWPL) & !is.na(TL) & !is.na(HW))
+nh.env <- read.csv('Data/VTNH_environmental.csv')
+nh.env <- nh.env[-c(41:43),]
 
-# func <- function(nh.s)
-# {
-#   return(data.frame(COR = cor(nh.s$OWPL, nh.s$TL)))
-# }
-# 
-# ddply(nh.s, .(species), func)
-# 
-# func <- function(nh.s)
-# {
-#   return(data.frame(COR = cor(nh.s$TL, nh.s$HW)))
-# }
-# 
-# ddply(nh.s, .(species), func)
+prey <- nh.env[,c(1,36:65)]
 
-nh.env<-read.csv('Data/VTNH_environmental.csv')
-nh.env<-nh.env[-c(41:43),]
-
-prey<-nh.env[,c(1,36:65)]
-
-prey<-melt(prey, id.vars=c("Lake"))
+prey <- melt(prey, id.vars=c("Lake"))
 colnames(prey)[2] <- 'Taxa'
 prey <- subset(prey, value > 0)
 
-diversity<-setDT(prey)[, .(count = uniqueN(Taxa)), by = Lake]
+diversity <- setDT(prey)[, .(count = uniqueN(Taxa)), by = Lake]
 
 nh.env <- nh.env[,c(1,5:7,15, 16, 17, 21, 22, 23, 28, 66)] #uS = cond, salinity = ppt, H20 PC1, No TDS
+ 
+nh.env$Competitor <- nh.env$Total.Enallagma + nh.env$Total.ischnura + nh.env$Total.Lestes + (10*nh.env$dragonfly.abundance)
+nh.env$Competitorm2 <- nh.env$Competitor/10
 
-nh.env$Competitor<-nh.env$Total.Enallagma + nh.env$Total.ischnura + nh.env$Total.Lestes + (10*nh.env$dragonfly.abundance)
-nh.env$Competitorm2<-nh.env$Competitor/10
-
-colnames(nh.env)[6]<-"cond"
-colnames(nh.env)[7]<-"salinity"
-colnames(nh.env)[8]<-"chl.a"
-colnames(nh.env)[9]<-"Shoot.Countm2"
-colnames(nh.env)[10]<-"Fish.Densitym2"
+colnames(nh.env)[6] <- "Conductivity"
+colnames(nh.env)[7] <- "Salinity"
+colnames(nh.env)[8] <- "chla.ug.L"
+colnames(nh.env)[9] <- "Shoot.Countm2"
+colnames(nh.env)[10] <- "Fish.Densitym2"
 nh.env$Fish.Densitym2 <- nh.env$Fish.Densitym2/(4.5*1.5)
-colnames(nh.env)[12]<-"Prey.CPU"
+colnames(nh.env)[12] <- "Prey.CPU"
+
+nh.env <-join(nh.env, diversity)
+colnames(nh.env)[10] <-'Diversity'
+
+nh <- join(nh, nh.env)
+
+nh <- subset(nh, species!='Ischnura' & species!='Lestes' & species!='Nehalennia' & species!='Dragonflies' & species!='Argia')
+colnames(df.E)[8] <- "Species"
+colnames(df.E)[3] <- "Date"
+colnames(df.E)[4] <- "SamplingRound"
+df.E[,2] <- NULL
+df.E$Region <- as.factor(rep("NH", nrow(df.E)))
+df.E$Parasite.CPU <- rep(NA, nrow(df.E))
+df.E <- df.E[,c(1,2,7,4,5,1,3,13,12,14,17,19,15,18,9,8,11,10,16)]
+colnames(df.E)[6] <- "FM_Name"
+
+df <- rbind(df,df.E)
+
+rm(list= ls()[!(ls() %in% c('df'))])
+
+########################################
+# Collapse water quality to single axis
+########################################
 
 nh.env[,c(2:4,11,13)] <- NULL
 
-h2o<-nh.env[,c(2:4)]
+h2o <- nh.env[,c(2:4)]
 
 h2o.pca <- prcomp(h2o,
                   center = TRUE,
@@ -255,29 +258,10 @@ print(h2o.pca)
 
 loadings <- h2o$rotation
 h2o.pca <- predict(h2o.pca, newdata = h2o) 
-run.pca<-as.data.frame(h2o.pca)
-run.pca<-subset(run.pca, select=c(1))
+run.pca <- as.data.frame(h2o.pca)
+run.pca <- subset(run.pca, select=c(1))
 
-nh.env<-cbind(nh.env,run.pca)
-colnames(nh.env)[10]<-'H2O.PC1'
+nh.env <- cbind(nh.env,run.pca)
+colnames(nh.env)[10] <- 'H2O.PC1'
 
-
-nh.env<-join(nh.env, diversity)
-colnames(nh.env)[11]<-'Diversity'
-
-df.E<-join(nh, nh.env)
-
-df.E<-subset(df.E, species!='Ischnura' & species!='Lestes' & species!='Nehalennia' & species!='Dragonflies' & species!='Argia')
-colnames(df.E)[8] <- "Species"
-colnames(df.E)[3] <- "Date"
-colnames(df.E)[4] <- "SamplingRound"
-df.E[,2]<-NULL
-df.E$Region<-as.factor(rep("NH", nrow(df.E)))
-df.E$Parasite.CPU <- rep(NA, nrow(df.E))
-df.E<-df.E[,c(1,2,7,4,5,1,3,13,12,14,17,19,15,18,9,8,11,10,16)]
-colnames(df.E)[6]<-"FM_Name"
-
-df<-rbind(df,df.E)
-
-rm(list= ls()[!(ls() %in% c('df'))])
 
