@@ -297,6 +297,12 @@ df$Long <- ifelse(is.na(df$Long),
                   mean(nh$Long, na.rm = TRUE),
                   df$Long)
 
+################################
+# Drop unused levels of Species
+################################
+
+df$Species <- droplevels(df$Species)
+
 
 rm(list= ls()[!(ls() %in% c('df'))])
 
