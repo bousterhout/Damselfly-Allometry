@@ -1,0 +1,46 @@
+---
+title: "Damselfly Allometry"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Data Preparation
+
+All data prep steps happen in the DataSteps.R file. If you have any questions
+it's pretty well annotated.
+
+```{r message = FALSE, warning = FALSE}
+source('DataSteps.R')
+```
+There are a few different ways you could analyze the data. Here's what I've tried
+so far. 
+
+## Option 1: Phylogenetic conservatism analysis
+Initially it seemed like a good idea to control for relatedness and/or to look
+at whether more closely related species had similar growth responses. Unfortunately,
+we don't have enough species to pull that off (either within a region or shared across 
+regions).
+
+## Option 2: Analyze all data in 1 model
+One way to go about this is to include all the lakes in one model and to include
+region as a covariate. The downside to this approach is only 3 of the 10 species 
+with > 50 observations were found across the midwest and in New England.
+
+```{r}
+table(df$Species, df$Region)
+```
+
+## Option 3
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
