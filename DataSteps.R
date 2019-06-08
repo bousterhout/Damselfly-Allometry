@@ -4,11 +4,15 @@
 # BHO
 #############
 
+#Set working directory to the location of this file
+#setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+
 #Functions
 source("Functions.R")
 
 #Packages
-packages <- c("reshape2", "plyr", "data.table")
+packages <- c("reshape2", "plyr", "data.table", "car", "lme4", "stargazer",
+              "knitr", "ggplot2", "cowplot")
 package.check(packages)
 
 ############################################
@@ -297,12 +301,35 @@ df$Long <- ifelse(is.na(df$Long),
                   mean(nh$Long, na.rm = TRUE),
                   df$Long)
 
-################################
-# Drop unused levels of Species
-################################
-
-df$Species <- droplevels(df$Species)
-
 
 rm(list= ls()[!(ls() %in% c('df'))])
+
+#############################
+# Split into regions
+#############################
+
+df$lOWPL<-log(df$OWPL)
+df$lHW <- log(df$HW)
+
+# Split into regions and dropped species if we did not capture at least 10
+# individuals at more than 2 sites
+
+df.S<-subset(df, Region=='SouthCentral')
+df.S<-subset(df.S, Species!="ENGE" & Species != 'ENCI')
+df.S<-subset(df.S, !is.na(OWPL) & !is.na(HW))
+
+df.N<-subset(df, Region=='NorthCentral')
+df.N<-subset(df.N, Species != "ENTR" & Species != 'ENVERN')
+df.N<-subset(df.N, !is.na(OWPL) & !is.na(HW))
+
+df.E<-subset(df, Region == "NE")  
+df.E<-subset(df.E, Species != "ENAS" & Species != "ENMI"  & 
+               Species != "ENTR" & Species != "ENEX" & 
+               Species != "ENVERN"  & Species != "ENPI")
+df.E<-subset(df.E, !is.na(OWPL) & !is.na(HW))
+
+#Drop unused factor levels
+df.S[] <- lapply(df.S, function(x) if(is.factor(x)) factor(x) else x)
+df.N[] <- lapply(df.N, function(x) if(is.factor(x)) factor(x) else x)
+df.E[] <- lapply(df.E, function(x) if(is.factor(x)) factor(x) else x)
 
