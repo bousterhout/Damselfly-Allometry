@@ -12,6 +12,9 @@ knitr::opts_chunk$set(echo = TRUE)
 All data prep steps happen in the DataSteps.R file. If you have any questions
 it's pretty well annotated.
 
+I dropped species if we did not capture are least 10 individuals at more than 
+2 sites. 
+
 ```{r message = FALSE, warning = FALSE}
 source('DataSteps.R')
 ```
@@ -26,21 +29,137 @@ regions).
 
 ## Option 2: Analyze all data in 1 model
 One way to go about this is to include all the lakes in one model and to include
-region as a covariate. The downside to this approach is only 3 of the 10 species 
-with > 50 observations were found across the midwest and in New England.
+region as a covariate. The downside to this approach is only 3 of the 7 species 
+with that meant minimum observation threshold were found across the midwest and
+in New England.
 
-```{r}
-table(df$Species, df$Region)
+```{r echo = FALSE, results = 'asis'}
+library('knitr')
+temp <- table(df$Species, df$Region)
+kable(temp)
 ```
 
-## Option 3
+## Option 3: Analyze each region separately
+Another way to approach the problem is to model each region (south central, north central,
+and northeast) separately. The advantage here is that we can include all species.
+This approach focusses more on growth pattern differnces among species and less
+on differences between regions. 
 
-## Including Plots
 
-You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+### New England
+```{r echo = FALSE, results = 'asis'}
+library('knitr')
+temp <- table(df.E$FM_Name, df.E$Species)
+kable(temp)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+### North Central
+```{r echo = FALSE, results = 'asis'}
+temp <- table(df.N$FM_Name, df.N$Species)
+kable(temp)
+```
+
+### South Central
+```{r echo = FALSE, results = 'asis'}
+library('knitr')
+temp <-table(df.S$FM_Name, df.S$Species)
+kable(temp)
+```
+
+### Step 1: Look at relationship between head width (HW) and outer wing pad length (OWPL)
+If correlation perfect = isometry, weak = allometry
+
+I assumed a power law relationship (y = ax^b) based on non-odonate literature.
+Under a power law, the exponential (b) is estimated by the slope term. 
+But that might not be supported here. Something to think about.
+
+Model: log(HW) ~ Species * log(OWPL) + Sampling Round + (OWPL|Lake)
+
+Looking at slope terms, OWPL and HW allometrically scaled and the strength 
+of covariance varied between species, regions, and sampling rounds. 
+
+```{r echo = FALSE, results = 'asis'}
+lme.E <- lmer(log(HW) ~  Species*log(OWPL) + as.factor(Sampling.Round) + (log(OWPL)|FM_Name),
+             data=df.E)
+
+lme.N <- lmer(log(HW) ~  Species*log(OWPL) + as.factor(Sampling.Round) + (log(OWPL)|FM_Name),
+             data=df.N)
+
+lme.S <- lmer(log(HW) ~  Species*log(OWPL) + as.factor(Sampling.Round) + (log(OWPL)|FM_Name),
+             data=df.S)
+
+stargazer(lme.E, lme.N, lme.S, 
+          single.row = TRUE,
+          omit.stat=c("LL","ser","f"), no.space=TRUE,
+          intercept.top = TRUE,
+          intercept.bottom = FALSE,
+          column.labels = c('Northeast', 'North Central', 'South Central'),
+          model.numbers = FALSE,
+          type = 'html')
+
+```
+
+
+
+```{r echo = FALSE}
+library(ggplot2)
+df.S$Color<-ifelse(df.S$Species == "ENBA", "#e41a1c",
+       ifelse( df.S$Species == 'ENEX', '#377eb8',
+               ifelse(df.S$Species == 'ENSI', '#4daf4a',
+                      ifelse(df.S$Species == 'ENTR', '#984ea3',
+                             ifelse(df.S$Species == 'ENVE', '#ff7f00',
+                                    ifelse(df.S$Species == 'ENGE', '#ffff33',
+                                           ifelse(df.S$Species == 'ENEB_ENHA', '#a65628','#f781bf')))))))
+
+df.N$Color<-ifelse(df.N$Species == "ENBA", "#e41a1c",
+                   ifelse( df.N$Species == 'ENEX', '#377eb8',
+                           ifelse(df.N$Species == 'ENSI', '#4daf4a',
+                                  ifelse(df.N$Species == 'ENTR', '#984ea3',
+                                         ifelse(df.N$Species == 'ENVE', '#ff7f00',
+                                                ifelse(df.N$Species == 'ENGE', '#ffff33',
+                                                       ifelse(df.N$Species == 'ENEB_ENHA', '#a65628','#f781bf')))))))
+
+df.E$Color<-ifelse(df.E$Species == "ENBA", "#e41a1c",
+                   ifelse( df.E$Species == 'ENEX', '#377eb8',
+                           ifelse(df.E$Species == 'ENSI', '#4daf4a',
+                                  ifelse(df.E$Species == 'ENTR', '#984ea3',
+                                         ifelse(df.E$Species == 'ENVE', '#ff7f00',
+                                                ifelse(df.E$Species == 'ENGE', '#80b1d3',
+                                                       ifelse(df.E$Species == 'ENEB_ENHA', '#a65628','#f781bf')))))))
+
+
+ggplot(data=df.S, aes(y=HW, x=OWPL, colour = Species))+
+  # geom_jitter()+
+  geom_smooth(method=lm, se=F, lwd=1)+
+  scale_x_continuous(trans='log', breaks = c(0.1,0.5,1,2,4,6))+
+  scale_y_continuous(trans='log', breaks = c(3,4,6,8))+
+  scale_color_manual(values = c("#e41a1c", '#80b1d3', '#4daf4a', '#984ea3','#ff7f00'))+
+  ggtitle("South Central") +
+  facet_grid(~Sampling.Round)
+#  guides(color=FALSE)
+
+
+ggplot(data=df.N, aes(y=HW, x=OWPL, colour=Species))+
+  # geom_jitter()+
+  geom_smooth(method=lm, se=F, lwd=1)+
+  scale_x_continuous(trans='log', breaks = c(0.1,0.5,1,2,4,6))+
+  scale_y_continuous(trans='log', breaks = c(2,4,6,8))+
+  scale_color_manual(values = c('#377eb8', '#4daf4a', '#ff7f00', 'black'))+
+  facet_grid(~Sampling.Round)+
+  ggtitle("North Central")
+#  guides(color=FALSE)
+
+
+ggplot(data=df.E, aes(y=HW, x=OWPL, colour=Species, group=Species))+
+  geom_smooth(method=lm, se=F, lwd=1)+
+  scale_x_continuous(trans='log', breaks = c(0.1,0.5,1,2,3))+
+  scale_y_continuous(trans='log', breaks = c(1.5,2,3))+
+  scale_color_manual(values = c('#377eb8', '#4daf4a', '#ff7f00', 'black', '#f781bf'))+
+  ggtitle("Northeast")+
+  facet_grid(~Sampling.Round)
+  #guides(color=FALSE)
+
+```
+
+#### Step 2: Explore data to see if any environmental factors were associated with growth strategy
