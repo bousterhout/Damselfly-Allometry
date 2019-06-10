@@ -31,7 +31,7 @@ regions).
 One way to go about this is to include all the lakes in one model and to include
 region as a covariate. The downside to this approach is only 3 of the 7 species 
 with that meant minimum observation threshold were found across the midwest and
-in New England.
+in Northeast.
 
 ```{r echo = FALSE, results = 'asis'}
 library('knitr')
@@ -46,11 +46,10 @@ This approach focusses more on growth pattern differnces among species and less
 on differences between regions. 
 
 
-
-### New England
+### South Central
 ```{r echo = FALSE, results = 'asis'}
 library('knitr')
-temp <- table(df.E$FM_Name, df.E$Species)
+temp <-table(df.S$FM_Name, df.S$Species)
 kable(temp)
 ```
 
@@ -60,10 +59,10 @@ temp <- table(df.N$FM_Name, df.N$Species)
 kable(temp)
 ```
 
-### South Central
+### Northeast
 ```{r echo = FALSE, results = 'asis'}
 library('knitr')
-temp <-table(df.S$FM_Name, df.S$Species)
+temp <- table(df.E$FM_Name, df.E$Species)
 kable(temp)
 ```
 
@@ -89,12 +88,12 @@ lme.N <- lmer(log(HW) ~  Species*log(OWPL) + as.factor(Sampling.Round) + (log(OW
 lme.S <- lmer(log(HW) ~  Species*log(OWPL) + as.factor(Sampling.Round) + (log(OWPL)|FM_Name),
              data=df.S)
 
-stargazer(lme.E, lme.N, lme.S, 
+stargazer(lme.S, lme.N, lme.E, 
           single.row = TRUE,
           omit.stat=c("LL","ser","f"), no.space=TRUE,
           intercept.top = TRUE,
           intercept.bottom = FALSE,
-          column.labels = c('Northeast', 'North Central', 'South Central'),
+          column.labels = c('South Central', 'North Central', 'Northeast'),
           model.numbers = FALSE,
           type = 'html')
 
@@ -163,3 +162,152 @@ ggplot(data=df.E, aes(y=HW, x=OWPL, colour=Species, group=Species))+
 ```
 
 #### Step 2: Explore data to see if any environmental factors were associated with growth strategy
+
+First I checked to see how to best explain the relationship between HW and OWPL
+
+I tested 4 models:  
+r1: HW ~ OWPL  
+r2: log(HW) ~ log(OWPL)  
+r3: log(HW) ~ log(OWPL^2)  
+r4: log(HW) ~ log(OWPL) + log(OWPL^2)  
+
+South Central:
+```{r echo = FALSE, warning = FALSE, message = FALSE}
+source('DataSteps.R')
+r1<-lm(HW ~ OWPL, data=df.S)
+r2<-lm(lHW ~ lOWPL, data = df.S)
+r3<-lm(lHW ~ log(OWPL^2), data=df.S)
+r4<-lm(lHW ~ lOWPL + log(OWPL^2), data=df.S)
+AIC(r1,r2,r3,r4)
+```
+North Central:  
+```{r echo = FALSE, warning = FALSE, message = FALSE}
+source('DataSteps.R')
+r1<-lm(HW ~ OWPL, data=df.N)
+r2<-lm(lHW ~ lOWPL, data = df.N)
+r3<-lm(lHW ~ log(OWPL^2), data=df.N)
+r4<-lm(lHW ~ lOWPL + log(OWPL^2), data=df.N)
+AIC(r1,r2,r3,r4)
+```
+
+Northeast:  
+```{r echo = FALSE, warning = FALSE, message = FALSE}
+source('DataSteps.R')
+r1<-lm(HW ~ OWPL, data=df.E)
+r2<-lm(lHW ~ lOWPL, data = df.E)
+r3<-lm(lHW ~ log(OWPL^2), data=df.E)
+r4<-lm(lHW ~ lOWPL + log(OWPL^2), data=df.E)
+AIC(r1,r2,r3,r4)
+```
+
+Across the board log(HW) ~ log(OWPL) accounts for the most variance and is
+the most parsimonious.
+
+I then extracted the residuals from each model and used these as the response variable
+to identify environmental covariates that were associated with more or less investment
+in HW than we'd otherwise expect given OWPL.
+
+```{r echo = FALSE, warning = FALSE, message = FALSE}
+source('DataSteps.R' )
+#Extract residuals
+rS<-lm(log(HW) ~ log(OWPL), data=df.S)
+rN<-lm(log(HW) ~ log(OWPL), data=df.N)
+rE<-lm(log(HW) ~ log(OWPL), data=df.E)
+
+df.NAll <-rbind(df.N, df.E)
+rNAll<-lm(log(HW) ~ log(OWPL), data=df.NAll)
+
+df.N$resid.HW<-residuals(rN)
+df.S$resid.HW<-residuals(rS)
+df.E$resid.HW<-residuals(rE)
+df.NAll$resid.HW<-residuals(rNAll)
+
+df.Ss<-as.data.frame(scale(df.S[,c(8:19)]))
+df.S2<-cbind(df.S[,c(1:7,20,21)], df.Ss)
+
+df.Ns<-as.data.frame(scale(df.N[,c(8:19)]))
+df.N2<-cbind(df.N[,c(1:7, 20, 21)], df.Ns)
+
+df.Es<-as.data.frame(scale(df.E[,c(8:19)]))
+df.E2<-cbind(df.E[,c(1:7, 20, 21)], df.Es)
+
+df.NAlls<-as.data.frame(scale(df.NAll[,c(8:19)]))
+df.NAll2<-cbind(df.NAll[,c(1:7, 20, 21)], df.NAlls)
+
+#Model effects
+covar.lmeS <- lmer(resid.HW ~ Species*Competitorm2 + Species*Fish.Densitym2 +  
+                     Species*Shoot.Countm2 + Species*Prey.CPU +  Sampling.Round +
+                     (1|FM_Name), data=df.S2)
+View(summary(covar.lmeS)$coef)
+Anova(covar.lmeS)
+```
+
+sc.comp<-
+ggplot()+
+  geom_smooth(data=df.S2, aes(x = Competitorm2, y = resid.HW, color=Species), method='lm', se = T) +
+  # geom_point(data = df.S2, aes(x= Competitorm2, y = resid.HW, color = Species))+
+  # coord_cartesian(ylim = c(-0.25,0.25))+
+  scale_color_manual(values = c("#e41a1c", '#80b1d3', '#4daf4a', '#984ea3','#ff7f00'))+
+  scale_y_continuous('Residual HW') + 
+  scale_x_continuous('Competitor density (m3)')+
+  facet_grid(~SamplingRound)+
+  guides(color=FALSE)
+
+
+sc.fish<-
+  ggplot()+
+  geom_smooth(data=df.S2, aes(x = Fish.Densitym2, y = resid.HW, color=Species), method='lm', se = T) +
+  # geom_point(data = df.S2, aes(x= Competitorm2, y = resid.HW, color = Species))+
+  # coord_cartesian(ylim = c(-0.25,0.25))+
+  scale_color_manual(values = c("#e41a1c", '#80b1d3', '#4daf4a', '#984ea3','#ff7f00'))+
+  scale_y_continuous('Residual HW') + 
+  scale_x_continuous('Fish density (m3)')+
+  facet_grid(~SamplingRound)+
+  guides(color=FALSE)
+
+covar.lmeN <- lmer(resid.HW ~ Species*Competitorm2 + Species*Fish.Densitym2 +  
+                     Species*Shoot.Countm2 + Species*Prey.CPU + SamplingRound +
+                     (1|FM_Name), data=df.N2)
+summary(covar.lmeN)
+Anova(covar.lmeN)
+
+#Insufficient ENAS, ENMI, and ENTR to include
+covar.lmeE <- lmer(resid.HW ~ Species*Competitorm2 + Species*Fish.Densitym2 +  
+                     Species*Shoot.Countm2 + Species*Prey.CPU +SamplingRound + (1|FM_Name), data=df.E2)
+summary(covar.lmeE)
+Anova(covar.lmeE)
+
+#Combine both northern samples
+#No collinearity problems.
+covar.lmeAllN <- lmer(resid.HW ~ Species*Competitorm2 + Species*Fish.Densitym2 +  
+                     Species*Shoot.Countm2 + Species*Prey.CPU +SamplingRound + (1|FM_Name), data=df.NAll2)
+summary(covar.lmeAllN)
+#View(summary(covar.lmeAllN)$coef)
+Anova(covar.lmeAllN)
+
+  ########################################################
+
+ggplot(data=df.S2, aes(y=resid.HW, x=Fish.Densitym2, colour=Species, group=Species))+
+  geom_smooth(method='lm', se=F)+
+  facet_grid(~SamplingRound)
+
+
+ggplot(data=df.subS, aes(y=Resid.L.HW, x=Enallagma, colour=Species, group=Species))+
+  geom_smooth(method=lm, se=F)
+
+ggplot(data=df.subS, aes(y=Resid.L.HW, x=Prey.Count))+
+  geom_smooth(method=lm, se=T)
+
+ggplot(data=df.subS, aes(y=Resid.L.HW, x=Per.Coverage))+
+  geom_smooth(method=lm, se=T)+ylab('Relative HW')
+
+
+
+
+ggplot(data=df.N2, aes(y=resid.HW, x=Fish.Densitym2, colour=Species, group=Species))+
+  geom_smooth(method='lm', se=F)
+
+
+
+#Growth
+p <- ggplot(grow, aes(Species, HWGrowth, colour=FM_Name)) + geom_point()

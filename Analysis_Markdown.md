@@ -28,7 +28,7 @@ responses. Unfortunately, we don’t have enough species to pull that off
 One way to go about this is to include all the lakes in one model and to
 include region as a covariate. The downside to this approach is only 3
 of the 7 species with that meant minimum observation threshold were
-found across the midwest and in New England.
+found across the midwest and in Northeast.
 
 |             | NorthCentral | SouthCentral |  NE |
 | ----------- | -----------: | -----------: | --: |
@@ -59,7 +59,55 @@ that we can include all species. This approach focusses more on growth
 pattern differnces among species and less on differences between
 regions.
 
-### New England
+### South Central
+
+|                   | ENBA | ENEX | ENSI | ENTR | ENVE |
+| ----------------- | ---: | ---: | ---: | ---: | ---: |
+| BobbKiddLake      |   69 |    8 |  107 |   20 |  139 |
+| BoonevilleLake    |    0 |   23 |    0 |    7 |   13 |
+| CharlestonLake    |    3 |   61 |  208 |  134 |  189 |
+| CoveLake          |    0 |    3 |    0 |    1 |   16 |
+| CrystalLake       |   11 |   18 |   19 |    1 |    0 |
+| DarbyLake         |    2 |  100 |  156 |  564 |  120 |
+| EngineerLake      |    0 |   79 |   22 |  233 |  132 |
+| GreenwoodLake     |    1 |   11 |  184 |  153 |   84 |
+| HorseheadLake     |    2 |  108 |   36 |  170 |   75 |
+| LakeFayetteville  |  114 |  512 |  748 |  127 |  283 |
+| LakeLeatherwood   |  161 |   95 |   33 |  370 |   18 |
+| LakeLincoln       |  349 |  260 |  736 |  395 |  742 |
+| LakePrairieGrove  |   84 |    6 |  141 |   44 |   71 |
+| LakeSequoyah      |    0 |   11 |   51 |  195 |    4 |
+| LakeWedington     |   16 |  138 |   21 |  121 |   31 |
+| LakeWilson        |  450 |   12 |   27 |   87 |   20 |
+| LockAndDamPond    |    0 |    2 |  478 |   39 |   21 |
+| OzarkCityLake     |    0 |   43 |    5 |   28 |  113 |
+| ParisReservoir    |    0 |   14 |   26 |   50 |  273 |
+| SiloamSpringsLake |   78 |   60 |   96 |   19 |   10 |
+
+### North Central
+
+|                | ENEB\_ENHA | ENGE | ENSI | ENVE |
+| -------------- | ---------: | ---: | ---: | ---: |
+| ClearwaterLake |          0 |    0 |    0 |   23 |
+| CodyLake       |          0 |    0 |   41 |    0 |
+| DiamondLake    |         23 |   25 |  440 |  234 |
+| GreenLake      |          0 |    0 |    0 |  210 |
+| LakeNopawan    |          0 |    0 |    0 |   28 |
+| LoonLake       |        387 |    0 |    0 |    0 |
+| LuraLake       |          0 |    0 |  221 |    0 |
+| MargaretLake   |          0 |    0 |    0 |   57 |
+| MissionLake    |          0 |    0 |    0 |   91 |
+| MollieLake     |          0 |    0 |    0 |   79 |
+| MudLake        |          0 |  282 |  120 |    0 |
+| PalmatierLake  |          0 |  242 |   59 |  279 |
+| PatrickLake    |          0 |    0 |   26 |    0 |
+| PickerelLake   |         56 |    0 |    0 |   83 |
+| SpringLake     |          0 |    0 |   39 |    0 |
+| SpringLakeEast |          0 |    0 |   36 |  138 |
+| SpurzemLake    |          0 |  206 |  394 |   86 |
+| WiscobeeLake   |          0 |   23 |    0 |   55 |
+
+### Northeast
 
 |                         | ENEB\_ENHA | ENGE | ENSI | ENVE | ENDI |
 | ----------------------- | ---------: | ---: | ---: | ---: | ---: |
@@ -104,63 +152,20 @@ regions.
 | Ticklenaked Pond, VT    |         33 |    4 |    8 |    5 |    0 |
 | Walker Pond             |          6 |    9 |    0 |   19 |   65 |
 
-### North Central
-
-|                | ENEB\_ENHA | ENGE | ENSI | ENVE |
-| -------------- | ---------: | ---: | ---: | ---: |
-| ClearwaterLake |          0 |    0 |    0 |   23 |
-| CodyLake       |          0 |    0 |   41 |    0 |
-| DiamondLake    |         23 |   25 |  440 |  234 |
-| GreenLake      |          0 |    0 |    0 |  210 |
-| LakeNopawan    |          0 |    0 |    0 |   28 |
-| LoonLake       |        387 |    0 |    0 |    0 |
-| LuraLake       |          0 |    0 |  221 |    0 |
-| MargaretLake   |          0 |    0 |    0 |   57 |
-| MissionLake    |          0 |    0 |    0 |   91 |
-| MollieLake     |          0 |    0 |    0 |   79 |
-| MudLake        |          0 |  282 |  120 |    0 |
-| PalmatierLake  |          0 |  242 |   59 |  279 |
-| PatrickLake    |          0 |    0 |   26 |    0 |
-| PickerelLake   |         56 |    0 |    0 |   83 |
-| SpringLake     |          0 |    0 |   39 |    0 |
-| SpringLakeEast |          0 |    0 |   36 |  138 |
-| SpurzemLake    |          0 |  206 |  394 |   86 |
-| WiscobeeLake   |          0 |   23 |    0 |   55 |
-
-### South Central
-
-|                   | ENBA | ENEX | ENSI | ENTR | ENVE |
-| ----------------- | ---: | ---: | ---: | ---: | ---: |
-| BobbKiddLake      |   69 |    8 |  107 |   20 |  139 |
-| BoonevilleLake    |    0 |   23 |    0 |    7 |   13 |
-| CharlestonLake    |    3 |   61 |  208 |  134 |  189 |
-| CoveLake          |    0 |    3 |    0 |    1 |   16 |
-| CrystalLake       |   11 |   18 |   19 |    1 |    0 |
-| DarbyLake         |    2 |  100 |  156 |  564 |  120 |
-| EngineerLake      |    0 |   79 |   22 |  233 |  132 |
-| GreenwoodLake     |    1 |   11 |  184 |  153 |   84 |
-| HorseheadLake     |    2 |  108 |   36 |  170 |   75 |
-| LakeFayetteville  |  114 |  512 |  748 |  127 |  283 |
-| LakeLeatherwood   |  161 |   95 |   33 |  370 |   18 |
-| LakeLincoln       |  349 |  260 |  736 |  395 |  742 |
-| LakePrairieGrove  |   84 |    6 |  141 |   44 |   71 |
-| LakeSequoyah      |    0 |   11 |   51 |  195 |    4 |
-| LakeWedington     |   16 |  138 |   21 |  121 |   31 |
-| LakeWilson        |  450 |   12 |   27 |   87 |   20 |
-| LockAndDamPond    |    0 |    2 |  478 |   39 |   21 |
-| OzarkCityLake     |    0 |   43 |    5 |   28 |  113 |
-| ParisReservoir    |    0 |   14 |   26 |   50 |  273 |
-| SiloamSpringsLake |   78 |   60 |   96 |   19 |   10 |
-
 ### Step 1: Look at relationship between head width (HW) and outer wing pad length (OWPL)
 
 If correlation perfect = isometry, weak = allometry
 
-I used a log \~ log model becuase a lot of the literature of growth
-relationships suggests a power relationship. But that migth not be
-supported here. Something to think about.
+I assumed a power law relationship (y = ax^b) based on non-odonate
+literature. Under a power law, the exponential (b) is estimated by the
+slope term. But that might not be supported here. Something to think
+about.
 
 Model: log(HW) \~ Species \* log(OWPL) + Sampling Round + (OWPL|Lake)
+
+Looking at slope terms, OWPL and HW allometrically scaled and the
+strength of covariance varied between species, regions, and sampling
+rounds.
 
 <table style="text-align:center">
 
@@ -220,7 +225,7 @@ log(HW)
 
 <td>
 
-Northeast
+South Central
 
 </td>
 
@@ -232,7 +237,7 @@ North Central
 
 <td>
 
-South Central
+Northeast
 
 </td>
 
@@ -256,7 +261,7 @@ Constant
 
 <td>
 
-0.898<sup>\*\*\*</sup> (0.006)
+1.329<sup>\*\*\*</sup> (0.005)
 
 </td>
 
@@ -268,33 +273,7 @@ Constant
 
 <td>
 
-1.329<sup>\*\*\*</sup> (0.005)
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:left">
-
-SpeciesENGE
-
-</td>
-
-<td>
-
-\-0.030<sup>\*\*\*</sup> (0.009)
-
-</td>
-
-<td>
-
-\-0.027<sup>\*\*\*</sup> (0.009)
-
-</td>
-
-<td>
+0.898<sup>\*\*\*</sup> (0.006)
 
 </td>
 
@@ -310,15 +289,41 @@ SpeciesENEX
 
 <td>
 
-</td>
-
-<td>
-
-</td>
-
-<td>
-
 \-0.016<sup>\*\*\*</sup> (0.005)
+
+</td>
+
+<td>
+
+</td>
+
+<td>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left">
+
+SpeciesENGE
+
+</td>
+
+<td>
+
+</td>
+
+<td>
+
+\-0.027<sup>\*\*\*</sup> (0.009)
+
+</td>
+
+<td>
+
+\-0.030<sup>\*\*\*</sup> (0.009)
 
 </td>
 
@@ -334,7 +339,7 @@ SpeciesENSI
 
 <td>
 
-\-0.078<sup>\*\*\*</sup> (0.016)
+\-0.012<sup>\*\*</sup> (0.005)
 
 </td>
 
@@ -346,7 +351,7 @@ SpeciesENSI
 
 <td>
 
-\-0.012<sup>\*\*</sup> (0.005)
+\-0.078<sup>\*\*\*</sup> (0.016)
 
 </td>
 
@@ -362,15 +367,15 @@ SpeciesENTR
 
 <td>
 
-</td>
-
-<td>
-
-</td>
-
-<td>
-
 \-0.019<sup>\*\*\*</sup> (0.005)
+
+</td>
+
+<td>
+
+</td>
+
+<td>
 
 </td>
 
@@ -386,7 +391,7 @@ SpeciesENVE
 
 <td>
 
-\-0.087<sup>\*\*\*</sup> (0.008)
+\-0.007 (0.005)
 
 </td>
 
@@ -398,7 +403,7 @@ SpeciesENVE
 
 <td>
 
-\-0.007 (0.005)
+\-0.087<sup>\*\*\*</sup> (0.008)
 
 </td>
 
@@ -414,15 +419,15 @@ SpeciesENDI
 
 <td>
 
+</td>
+
+<td>
+
+</td>
+
+<td>
+
 \-0.081<sup>\*\*\*</sup> (0.015)
-
-</td>
-
-<td>
-
-</td>
-
-<td>
 
 </td>
 
@@ -438,7 +443,7 @@ log(OWPL)
 
 <td>
 
-0.330<sup>\*\*\*</sup> (0.010)
+0.341<sup>\*\*\*</sup> (0.005)
 
 </td>
 
@@ -450,7 +455,7 @@ log(OWPL)
 
 <td>
 
-0.341<sup>\*\*\*</sup> (0.005)
+0.330<sup>\*\*\*</sup> (0.010)
 
 </td>
 
@@ -466,7 +471,7 @@ as.factor(Sampling.Round)2
 
 <td>
 
-0.006 (0.005)
+\-0.005<sup>\*\*\*</sup> (0.001)
 
 </td>
 
@@ -478,33 +483,7 @@ as.factor(Sampling.Round)2
 
 <td>
 
-\-0.005<sup>\*\*\*</sup> (0.001)
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:left">
-
-SpeciesENGE:log(OWPL)
-
-</td>
-
-<td>
-
-\-0.009 (0.015)
-
-</td>
-
-<td>
-
-0.027<sup>\*\*\*</sup> (0.008)
-
-</td>
-
-<td>
+0.006 (0.005)
 
 </td>
 
@@ -520,15 +499,41 @@ SpeciesENEX:log(OWPL)
 
 <td>
 
-</td>
-
-<td>
-
-</td>
-
-<td>
-
 \-0.001 (0.005)
+
+</td>
+
+<td>
+
+</td>
+
+<td>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left">
+
+SpeciesENGE:log(OWPL)
+
+</td>
+
+<td>
+
+</td>
+
+<td>
+
+0.027<sup>\*\*\*</sup> (0.008)
+
+</td>
+
+<td>
+
+\-0.009 (0.015)
 
 </td>
 
@@ -544,7 +549,7 @@ SpeciesENSI:log(OWPL)
 
 <td>
 
-\-0.038 (0.027)
+0.033<sup>\*\*\*</sup> (0.005)
 
 </td>
 
@@ -556,7 +561,7 @@ SpeciesENSI:log(OWPL)
 
 <td>
 
-0.033<sup>\*\*\*</sup> (0.005)
+\-0.038 (0.027)
 
 </td>
 
@@ -572,15 +577,15 @@ SpeciesENTR:log(OWPL)
 
 <td>
 
-</td>
-
-<td>
-
-</td>
-
-<td>
-
 0.002 (0.005)
+
+</td>
+
+<td>
+
+</td>
+
+<td>
 
 </td>
 
@@ -596,7 +601,7 @@ SpeciesENVE:log(OWPL)
 
 <td>
 
-0.036<sup>\*\*\*</sup> (0.013)
+0.020<sup>\*\*\*</sup> (0.005)
 
 </td>
 
@@ -608,7 +613,7 @@ SpeciesENVE:log(OWPL)
 
 <td>
 
-0.020<sup>\*\*\*</sup> (0.005)
+0.036<sup>\*\*\*</sup> (0.013)
 
 </td>
 
@@ -624,15 +629,15 @@ SpeciesENDI:log(OWPL)
 
 <td>
 
+</td>
+
+<td>
+
+</td>
+
+<td>
+
 \-0.001 (0.023)
-
-</td>
-
-<td>
-
-</td>
-
-<td>
 
 </td>
 
@@ -656,7 +661,7 @@ Observations
 
 <td>
 
-1,940
+11,110
 
 </td>
 
@@ -668,7 +673,7 @@ Observations
 
 <td>
 
-11,110
+1,940
 
 </td>
 
@@ -684,7 +689,7 @@ Akaike Inf. Crit.
 
 <td>
 
-\-3,442.988
+\-31,505.360
 
 </td>
 
@@ -696,7 +701,7 @@ Akaike Inf. Crit.
 
 <td>
 
-\-31,505.360
+\-3,442.988
 
 </td>
 
@@ -712,7 +717,7 @@ Bayesian Inf. Crit.
 
 <td>
 
-\-3,359.431
+\-31,395.620
 
 </td>
 
@@ -724,7 +729,7 @@ Bayesian Inf. Crit.
 
 <td>
 
-\-31,395.620
+\-3,359.431
 
 </td>
 
@@ -758,3 +763,146 @@ Bayesian Inf. Crit.
 </table>
 
 ![](Analysis_Markdown_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->![](Analysis_Markdown_files/figure-gfm/unnamed-chunk-7-2.png)<!-- -->![](Analysis_Markdown_files/figure-gfm/unnamed-chunk-7-3.png)<!-- -->
+
+#### Step 2: Explore data to see if any environmental factors were associated with growth strategy
+
+First I checked to see how to best explain the relationship between HW
+and OWPL
+
+I tested 4 models:  
+r1: HW \~ OWPL  
+r2: log(HW) \~ log(OWPL)  
+r3: log(HW) \~ log(OWPL^2)  
+r4: log(HW) \~ log(OWPL) + log(OWPL^2)
+
+South Central:
+
+    ##    df       AIC
+    ## r1  3   5642.08
+    ## r2  3 -30804.93
+    ## r3  3 -30804.93
+    ## r4  3 -30804.93
+
+North Central:
+
+    ##    df        AIC
+    ## r1  3   2009.952
+    ## r2  3 -12926.651
+    ## r3  3 -12926.651
+    ## r4  3 -12926.651
+
+Northeast:
+
+    ##    df        AIC
+    ## r1  3   254.5064
+    ## r2  3 -3178.9700
+    ## r3  3 -3178.9700
+    ## r4  3 -3178.9700
+
+Across the board log(HW) \~ log(OWPL) accounts for the most variance and
+is the most parsimonious.
+
+I then extracted the residuals from each model and used these as the
+response variable to identify environmental covariates that were
+associated with more or less investment in HW than we’d otherwise expect
+given OWPL.
+
+``` r
+source('DataSteps.R')
+```
+
+    ## Warning in eval(ei, envir): NAs introduced by coercion
+    
+    ## Warning in eval(ei, envir): NAs introduced by coercion
+    
+    ## Warning in eval(ei, envir): NAs introduced by coercion
+
+    ## Joining by: Lake
+    ## Joining by: Lake
+
+``` r
+#Extract residuals
+rS<-lm(log(HW) ~ log(OWPL), data=df.S)
+rN<-lm(log(HW) ~ log(OWPL), data=df.N)
+rE<-lm(log(HW) ~ log(OWPL), data=df.E)
+
+df.NAll <-rbind(df.N, df.E)
+rNAll<-lm(log(HW) ~ log(OWPL), data=df.NAll)
+
+df.N$resid.HW<-residuals(rN)
+df.S$resid.HW<-residuals(rS)
+df.E$resid.HW<-residuals(rE)
+df.NAll$resid.HW<-residuals(rNAll)
+
+df.Ss<-as.data.frame(scale(df.S[,c(8:19)]))
+df.S2<-cbind(df.S[,c(1:7,20,21)], df.Ss)
+
+df.Ns<-as.data.frame(scale(df.N[,c(8:19)]))
+df.N2<-cbind(df.N[,c(1:7, 20, 21)], df.Ns)
+
+df.Es<-as.data.frame(scale(df.E[,c(8:19)]))
+df.E2<-cbind(df.E[,c(1:7, 20, 21)], df.Es)
+
+df.NAlls<-as.data.frame(scale(df.NAll[,c(8:19)]))
+df.NAll2<-cbind(df.NAll[,c(1:7, 20, 21)], df.NAlls)
+```
+
+\#Model effects covar.lmeS \<- lmer(resid.HW \~ Species*Competitorm2 +
+Species*Fish.Densitym2 +  
+Species*Shoot.Countm2 + Species*Prey.CPU + SamplingRound + (1|FM\_Name),
+data=df.S2) View(summary(covar.lmeS)$coef) Anova(covar.lmeS)
+
+sc.comp\<- ggplot()+ geom\_smooth(data=df.S2, aes(x = Competitorm2, y =
+resid.HW, color=Species), method=‘lm’, se = T) + \# geom\_point(data =
+df.S2, aes(x= Competitorm2, y = resid.HW, color = Species))+ \#
+coord\_cartesian(ylim = c(-0.25,0.25))+ scale\_color\_manual(values =
+c(“\#e41a1c”, ‘\#80b1d3’, ‘\#4daf4a’, ‘\#984ea3’,‘\#ff7f00’))+
+scale\_y\_continuous(‘Residual HW’) + scale\_x\_continuous(‘Competitor
+density (m3)’)+ facet\_grid(\~SamplingRound)+ guides(color=FALSE)
+
+sc.fish\<- ggplot()+ geom\_smooth(data=df.S2, aes(x = Fish.Densitym2, y
+= resid.HW, color=Species), method=‘lm’, se = T) + \# geom\_point(data =
+df.S2, aes(x= Competitorm2, y = resid.HW, color = Species))+ \#
+coord\_cartesian(ylim = c(-0.25,0.25))+ scale\_color\_manual(values =
+c(“\#e41a1c”, ‘\#80b1d3’, ‘\#4daf4a’, ‘\#984ea3’,‘\#ff7f00’))+
+scale\_y\_continuous(‘Residual HW’) + scale\_x\_continuous(‘Fish density
+(m3)’)+ facet\_grid(\~SamplingRound)+ guides(color=FALSE)
+
+covar.lmeN \<- lmer(resid.HW \~ Species*Competitorm2 +
+Species*Fish.Densitym2 +  
+Species*Shoot.Countm2 + Species*Prey.CPU + SamplingRound + (1|FM\_Name),
+data=df.N2) summary(covar.lmeN) Anova(covar.lmeN)
+
+\#Insufficient ENAS, ENMI, and ENTR to include covar.lmeE \<-
+lmer(resid.HW \~ Species*Competitorm2 + Species*Fish.Densitym2 +  
+Species*Shoot.Countm2 + Species*Prey.CPU +SamplingRound + (1|FM\_Name),
+data=df.E2) summary(covar.lmeE) Anova(covar.lmeE)
+
+\#Combine both northern samples \#No collinearity problems.
+covar.lmeAllN \<- lmer(resid.HW \~ Species*Competitorm2 +
+Species*Fish.Densitym2 +  
+Species*Shoot.Countm2 + Species*Prey.CPU +SamplingRound + (1|FM\_Name),
+data=df.NAll2) summary(covar.lmeAllN)
+\#View(summary(covar.lmeAllN)$coef)
+Anova(covar.lmeAllN)
+
+\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
+
+ggplot(data=df.S2, aes(y=resid.HW, x=Fish.Densitym2, colour=Species,
+group=Species))+ geom\_smooth(method=‘lm’, se=F)+
+facet\_grid(\~SamplingRound)
+
+ggplot(data=df.subS, aes(y=Resid.L.HW, x=Enallagma, colour=Species,
+group=Species))+ geom\_smooth(method=lm, se=F)
+
+ggplot(data=df.subS, aes(y=Resid.L.HW, x=Prey.Count))+
+geom\_smooth(method=lm, se=T)
+
+ggplot(data=df.subS, aes(y=Resid.L.HW, x=Per.Coverage))+
+geom\_smooth(method=lm, se=T)+ylab(‘Relative HW’)
+
+ggplot(data=df.N2, aes(y=resid.HW, x=Fish.Densitym2, colour=Species,
+group=Species))+ geom\_smooth(method=‘lm’, se=F)
+
+\#Growth p \<- ggplot(grow, aes(Species, HWGrowth, colour=FM\_Name)) +
+geom\_point()
