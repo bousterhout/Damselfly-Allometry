@@ -207,42 +207,37 @@ I then extracted the residuals from each model and used these as the response va
 to identify environmental covariates that were associated with more or less investment
 in HW than we'd otherwise expect given OWPL.
 
+The model was: Residual HW ~ Species + Competitor Density + Species x Competitor Density + 
+Fish Density + Species x Fish Density + Macrophtye Density + Species x Macrophyte Density
++ Prey Density + Species x Prey Density + H2O.PC1 + Species x H2O.PC1 + Sampling.Round +
+(1|Lake)
+
+Note: I didn't include chl-a becuase it was colinear with competitor density
+
+South Central:
 ```{r echo = FALSE, warning = FALSE, message = FALSE}
 source('DataSteps.R' )
-#Extract residuals
-rS<-lm(log(HW) ~ log(OWPL), data=df.S)
-rN<-lm(log(HW) ~ log(OWPL), data=df.N)
-rE<-lm(log(HW) ~ log(OWPL), data=df.E)
 
-df.NAll <-rbind(df.N, df.E)
-rNAll<-lm(log(HW) ~ log(OWPL), data=df.NAll)
-
-df.N$resid.HW<-residuals(rN)
-df.S$resid.HW<-residuals(rS)
-df.E$resid.HW<-residuals(rE)
-df.NAll$resid.HW<-residuals(rNAll)
-
-df.Ss<-as.data.frame(scale(df.S[,c(8:19)]))
-df.S2<-cbind(df.S[,c(1:7,20,21)], df.Ss)
-
-df.Ns<-as.data.frame(scale(df.N[,c(8:19)]))
-df.N2<-cbind(df.N[,c(1:7, 20, 21)], df.Ns)
-
-df.Es<-as.data.frame(scale(df.E[,c(8:19)]))
-df.E2<-cbind(df.E[,c(1:7, 20, 21)], df.Es)
-
-df.NAlls<-as.data.frame(scale(df.NAll[,c(8:19)]))
-df.NAll2<-cbind(df.NAll[,c(1:7, 20, 21)], df.NAlls)
-
-#Model effects
+#Model effects  
 covar.lmeS <- lmer(resid.HW ~ Species*Competitorm2 + Species*Fish.Densitym2 +  
-                     Species*Shoot.Countm2 + Species*Prey.CPU +  Sampling.Round +
-                     (1|FM_Name), data=df.S2)
-View(summary(covar.lmeS)$coef)
-Anova(covar.lmeS)
-```
+                     Species*Shoot.Countm2 + Species*Prey.CPU + Species * H2O.PC1 +
+                     Sampling.Round + (1|FM_Name), data=df.S2)  
 
-sc.comp<-
+#summary(covar.lmeS)$coef  
+
+print('South Central')
+kable(Anova(covar.lmeS))
+
+ggplot()+
+  geom_smooth(data=df.S2, aes(x = Competitorm2, y = resid.HW), method='lm', se = T) +
+  # geom_point(data = df.S2, aes(x= Competitorm2, y = resid.HW, color = Species))+
+  # coord_cartesian(ylim = c(-0.25,0.25))+
+  #scale_color_manual(values = c("#e41a1c", '#80b1d3', '#4daf4a', '#984ea3','#ff7f00'))+
+  scale_y_continuous('Residual HW') + 
+  scale_x_continuous('Competitor density (m3)')+
+  facet_grid(~Sampling.Round)
+  #guides(color=FALSE)
+
 ggplot()+
   geom_smooth(data=df.S2, aes(x = Competitorm2, y = resid.HW, color=Species), method='lm', se = T) +
   # geom_point(data = df.S2, aes(x= Competitorm2, y = resid.HW, color = Species))+
@@ -250,64 +245,120 @@ ggplot()+
   scale_color_manual(values = c("#e41a1c", '#80b1d3', '#4daf4a', '#984ea3','#ff7f00'))+
   scale_y_continuous('Residual HW') + 
   scale_x_continuous('Competitor density (m3)')+
-  facet_grid(~SamplingRound)+
-  guides(color=FALSE)
+  facet_grid(~Sampling.Round)
+  #guides(color=FALSE)
 
+ggplot()+
+  geom_smooth(data=df.S2, aes(x = Fish.Densitym2, y = resid.HW), method='lm', se = T) +
+  # geom_point(data = df.S2, aes(x= Competitorm2, y = resid.HW, color = Species))+
+  # coord_cartesian(ylim = c(-0.25,0.25))+
+  #scale_color_manual(values = c("#e41a1c", '#80b1d3', '#4daf4a', '#984ea3','#ff7f00'))+
+  scale_y_continuous('Residual HW') + 
+  scale_x_continuous('Fish density (m3)')+
+  facet_grid(~Sampling.Round)
 
-sc.fish<-
-  ggplot()+
+ggplot()+
   geom_smooth(data=df.S2, aes(x = Fish.Densitym2, y = resid.HW, color=Species), method='lm', se = T) +
   # geom_point(data = df.S2, aes(x= Competitorm2, y = resid.HW, color = Species))+
   # coord_cartesian(ylim = c(-0.25,0.25))+
   scale_color_manual(values = c("#e41a1c", '#80b1d3', '#4daf4a', '#984ea3','#ff7f00'))+
   scale_y_continuous('Residual HW') + 
   scale_x_continuous('Fish density (m3)')+
-  facet_grid(~SamplingRound)+
-  guides(color=FALSE)
+  facet_grid(~Sampling.Round)
+#  guides(color=FALSE)
+```
 
-covar.lmeN <- lmer(resid.HW ~ Species*Competitorm2 + Species*Fish.Densitym2 +  
-                     Species*Shoot.Countm2 + Species*Prey.CPU + SamplingRound +
-                     (1|FM_Name), data=df.N2)
-summary(covar.lmeN)
-Anova(covar.lmeN)
-
-#Insufficient ENAS, ENMI, and ENTR to include
-covar.lmeE <- lmer(resid.HW ~ Species*Competitorm2 + Species*Fish.Densitym2 +  
-                     Species*Shoot.Countm2 + Species*Prey.CPU +SamplingRound + (1|FM_Name), data=df.E2)
-summary(covar.lmeE)
-Anova(covar.lmeE)
+North Central and northeast models were rank deficient, but if combined data into a North model:
+```{r echo = FALSE, warning = FALSE, message = FALSE}
+source('DataSteps.R' )
+# covar.lmeN <- lmer(resid.HW ~ Species*Competitorm2 + Species*Fish.Densitym2 +  
+#                      Species*Shoot.Countm2 + Species*Prey.CPU + Species * H2O.PC1 +
+#                      Sampling.Round + (1|FM_Name), data=df.N2)
+# summary(covar.lmeN)
+# Anova(covar.lmeN)
+# 
+# #Insufficient ENAS, ENMI, and ENTR to include
+# covar.lmeE <- lmer(resid.HW ~ Species*Competitorm2 + Species*Fish.Densitym2 +  
+#                      Species*Shoot.Countm2 + Species*Prey.CPU +SamplingRound + (1|FM_Name), data=df.E2)
+# summary(covar.lmeE)
+# Anova(covar.lmeE)
 
 #Combine both northern samples
 #No collinearity problems.
 covar.lmeAllN <- lmer(resid.HW ~ Species*Competitorm2 + Species*Fish.Densitym2 +  
-                     Species*Shoot.Countm2 + Species*Prey.CPU +SamplingRound + (1|FM_Name), data=df.NAll2)
-summary(covar.lmeAllN)
+                     Species*Shoot.Countm2 + Species*Prey.CPU + Species * H2O.PC1 +
+                     Sampling.Round + (1|FM_Name), data=df.NAll2)
+#summary(covar.lmeAllN)
 #View(summary(covar.lmeAllN)$coef)
-Anova(covar.lmeAllN)
+kable(Anova(covar.lmeAllN))
 
-  ########################################################
+ggplot()+
+  geom_smooth(data=df.NAll2, aes(x = Shoot.Countm2, y = resid.HW), method='lm', se = T) +
+  # geom_point(data = df.S2, aes(x= Shoot.Countm2, y = resid.HW, color = Species))+
+  # coord_cartesian(ylim = c(-0.25,0.25))+
+  #scale_color_manual(values = c("#e41a1c", '#80b1d3', '#4daf4a', '#984ea3','#ff7f00'))+
+  scale_y_continuous('Residual HW') + 
+  scale_x_continuous('Shoot count (m3)')+
+  facet_grid(~Sampling.Round)
+  #guides(color=FALSE)
 
-ggplot(data=df.S2, aes(y=resid.HW, x=Fish.Densitym2, colour=Species, group=Species))+
-  geom_smooth(method='lm', se=F)+
-  facet_grid(~SamplingRound)
+ggplot()+
+  geom_smooth(data=df.NAll2, aes(x = Shoot.Countm2, y = resid.HW, colour = Species), method='lm', se = T) +
+  # geom_point(data = df.NAll2, aes(x= Shoot.Countm2, y = resid.HW, color = Species))+
+  # coord_cartesian(ylim = c(-0.25,0.25))+
+  scale_color_manual(values = c("#e41a1c", '#80b1d3', '#4daf4a', '#984ea3','#ff7f00'))+
+  scale_y_continuous('Residual HW') + 
+  scale_x_continuous('Shoot count (m3)')+
+  facet_grid(~Sampling.Round)
+  #guides(color=FALSE)
 
+ggplot()+
+  geom_smooth(data=df.NAll2, aes(x = Fish.Densitym2, y = resid.HW), method='lm', se = T) +
+  # geom_point(data = df.NAll2, aes(x= Fish.Densitym2, y = resid.HW, color = Species))+
+  # coord_cartesian(ylim = c(-0.25,0.25))+
+  #scale_color_manual(values = c("#e41a1c", '#80b1d3', '#4daf4a', '#984ea3','#ff7f00'))+
+  scale_y_continuous('Residual HW') + 
+  scale_x_continuous('Fish density (m3)')+
+  facet_grid(~Sampling.Round)
+  #guides(color=FALSE)
 
-ggplot(data=df.subS, aes(y=Resid.L.HW, x=Enallagma, colour=Species, group=Species))+
-  geom_smooth(method=lm, se=F)
+ggplot()+
+  geom_smooth(data=df.NAll2, aes(x = Fish.Densitym2, y = resid.HW, colour = Species), method='lm', se = T) +
+  # geom_point(data = df.NAll2, aes(x= Fish.Densitym2, y = resid.HW, color = Species))+
+  # coord_cartesian(ylim = c(-0.25,0.25))+
+  scale_color_manual(values = c("#e41a1c", '#80b1d3', '#4daf4a', '#984ea3','#ff7f00'))+
+  scale_y_continuous('Residual HW') + 
+  scale_x_continuous('Fish density (m3)')+
+  facet_grid(~Sampling.Round)
+  #guides(color=FALSE)
 
-ggplot(data=df.subS, aes(y=Resid.L.HW, x=Prey.Count))+
-  geom_smooth(method=lm, se=T)
+ggplot()+
+  geom_smooth(data=df.NAll2, aes(x = Prey.CPU, y = resid.HW), method='lm', se = T) +
+  # geom_point(data = df.NAll2, aes(x= Prey.CPU, y = resid.HW, color = Species))+
+  # coord_cartesian(ylim = c(-0.25,0.25))+
+  #scale_color_manual(values = c("#e41a1c", '#80b1d3', '#4daf4a', '#984ea3','#ff7f00'))+
+  scale_y_continuous('Residual HW') + 
+  scale_x_continuous('Prey CPU')+
+  facet_grid(~Sampling.Round)
+  #guides(color=FALSE)
 
-ggplot(data=df.subS, aes(y=Resid.L.HW, x=Per.Coverage))+
-  geom_smooth(method=lm, se=T)+ylab('Relative HW')
+ggplot()+
+  geom_smooth(data=df.NAll2, aes(x = Prey.CPU, y = resid.HW, colour = Species), method='lm', se = T) +
+  # geom_point(data = df.NAll2, aes(x= Prey.CPU, y = resid.HW, color = Species))+
+  # coord_cartesian(ylim = c(-0.25,0.25))+
+  scale_color_manual(values = c("#e41a1c", '#80b1d3', '#4daf4a', '#984ea3','#ff7f00'))+
+  scale_y_continuous('Residual HW') + 
+  scale_x_continuous('Prey CPU')+
+  facet_grid(~Sampling.Round)
+  #guides(color=FALSE)
 
-
-
-
-ggplot(data=df.N2, aes(y=resid.HW, x=Fish.Densitym2, colour=Species, group=Species))+
-  geom_smooth(method='lm', se=F)
-
-
-
-#Growth
-p <- ggplot(grow, aes(Species, HWGrowth, colour=FM_Name)) + geom_point()
+ggplot()+
+  geom_smooth(data=df.NAll2, aes(x = H2O.PC1, y = resid.HW), method='lm', se = T) +
+  # geom_point(data = df.NAll2, aes(x= H2O.PC1, y = resid.HW, color = Species))+
+  # coord_cartesian(ylim = c(-0.25,0.25))+
+  #scale_color_manual(values = c("#e41a1c", '#80b1d3', '#4daf4a', '#984ea3','#ff7f00'))+
+  scale_y_continuous('Residual HW') + 
+  scale_x_continuous('Water PC1')+
+  facet_grid(~Sampling.Round)
+  #guides(color=FALSE)
+```

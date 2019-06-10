@@ -333,3 +333,27 @@ df.S[] <- lapply(df.S, function(x) if(is.factor(x)) factor(x) else x)
 df.N[] <- lapply(df.N, function(x) if(is.factor(x)) factor(x) else x)
 df.E[] <- lapply(df.E, function(x) if(is.factor(x)) factor(x) else x)
 
+#Extract residuals
+rS<-lm(log(HW) ~ log(OWPL), data=df.S)
+rN<-lm(log(HW) ~ log(OWPL), data=df.N)
+rE<-lm(log(HW) ~ log(OWPL), data=df.E)
+
+df.NAll <-rbind(df.N, df.E)
+rNAll<-lm(log(HW) ~ log(OWPL), data=df.NAll)
+
+df.N$resid.HW<-residuals(rN)
+df.S$resid.HW<-residuals(rS)
+df.E$resid.HW<-residuals(rE)
+df.NAll$resid.HW<-residuals(rNAll)
+
+df.Ss<-as.data.frame(scale(df.S[,c(8:19)]))
+df.S2<-cbind(df.S[,c(1:7,20:22)], df.Ss)
+
+df.Ns<-as.data.frame(scale(df.N[,c(8:19)]))
+df.N2<-cbind(df.N[,c(1:7, 20:22)], df.Ns)
+
+df.Es<-as.data.frame(scale(df.E[,c(8:19)]))
+df.E2<-cbind(df.E[,c(1:7, 20:22)], df.Es)
+
+df.NAlls<-as.data.frame(scale(df.NAll[,c(8:19)]))
+df.NAll2<-cbind(df.NAll[,c(1:7, 20:22)], df.NAlls)

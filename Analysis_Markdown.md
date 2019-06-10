@@ -807,102 +807,51 @@ response variable to identify environmental covariates that were
 associated with more or less investment in HW than we’d otherwise expect
 given OWPL.
 
-``` r
-source('DataSteps.R')
-```
+The model was: Residual HW \~ Species + Competitor Density + Species x
+Competitor Density + Fish Density + Species x Fish Density + Macrophtye
+Density + Species x Macrophyte Density + Prey Density + Species x Prey
+Density + H2O.PC1 + Species x H2O.PC1 + Sampling.Round + (1|Lake)
 
-    ## Warning in eval(ei, envir): NAs introduced by coercion
-    
-    ## Warning in eval(ei, envir): NAs introduced by coercion
-    
-    ## Warning in eval(ei, envir): NAs introduced by coercion
+Note: I didn’t include chl-a becuase it was colinear with competitor
+density
 
-    ## Joining by: Lake
-    ## Joining by: Lake
+South Central:
 
-``` r
-#Extract residuals
-rS<-lm(log(HW) ~ log(OWPL), data=df.S)
-rN<-lm(log(HW) ~ log(OWPL), data=df.N)
-rE<-lm(log(HW) ~ log(OWPL), data=df.E)
+    ## [1] "South Central"
 
-df.NAll <-rbind(df.N, df.E)
-rNAll<-lm(log(HW) ~ log(OWPL), data=df.NAll)
+|                        |       Chisq | Df | Pr(\>Chisq) |
+| ---------------------- | ----------: | -: | ----------: |
+| Species                | 315.4914866 |  4 |   0.0000000 |
+| Competitorm2           |  16.8070675 |  1 |   0.0000414 |
+| Fish.Densitym2         |   4.4714110 |  1 |   0.0344665 |
+| Shoot.Countm2          |   0.4361868 |  1 |   0.5089687 |
+| Prey.CPU               |   1.8665987 |  1 |   0.1718651 |
+| H2O.PC1                |   1.5617344 |  1 |   0.2114115 |
+| Sampling.Round         |  46.3282481 |  1 |   0.0000000 |
+| Species:Competitorm2   |  12.8462373 |  4 |   0.0120521 |
+| Species:Fish.Densitym2 |   8.2904665 |  4 |   0.0814992 |
+| Species:Shoot.Countm2  |   3.0657619 |  4 |   0.5468813 |
+| Species:Prey.CPU       |   7.1793472 |  4 |   0.1267087 |
+| Species:H2O.PC1        |   3.8248846 |  4 |   0.4302236 |
 
-df.N$resid.HW<-residuals(rN)
-df.S$resid.HW<-residuals(rS)
-df.E$resid.HW<-residuals(rE)
-df.NAll$resid.HW<-residuals(rNAll)
+![](Analysis_Markdown_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->![](Analysis_Markdown_files/figure-gfm/unnamed-chunk-11-2.png)<!-- -->![](Analysis_Markdown_files/figure-gfm/unnamed-chunk-11-3.png)<!-- -->![](Analysis_Markdown_files/figure-gfm/unnamed-chunk-11-4.png)<!-- -->
 
-df.Ss<-as.data.frame(scale(df.S[,c(8:19)]))
-df.S2<-cbind(df.S[,c(1:7,20,21)], df.Ss)
+North Central and northeast models were rank deficient, but if combined
+data into a North model:
 
-df.Ns<-as.data.frame(scale(df.N[,c(8:19)]))
-df.N2<-cbind(df.N[,c(1:7, 20, 21)], df.Ns)
+|                        |        Chisq | Df | Pr(\>Chisq) |
+| ---------------------- | -----------: | -: | ----------: |
+| Species                | 1059.5359479 |  4 |   0.0000000 |
+| Competitorm2           |    0.0001459 |  1 |   0.9903614 |
+| Fish.Densitym2         |    0.0391999 |  1 |   0.8430532 |
+| Shoot.Countm2          |   26.7922377 |  1 |   0.0000002 |
+| Prey.CPU               |    0.0416146 |  1 |   0.8383562 |
+| H2O.PC1                |   37.7898836 |  1 |   0.0000000 |
+| Sampling.Round         |  110.4133491 |  1 |   0.0000000 |
+| Species:Competitorm2   |    3.2057240 |  4 |   0.5240069 |
+| Species:Fish.Densitym2 |   11.6346202 |  4 |   0.0202856 |
+| Species:Shoot.Countm2  |   22.6666317 |  4 |   0.0001476 |
+| Species:Prey.CPU       |   17.2955874 |  4 |   0.0016933 |
+| Species:H2O.PC1        |    6.8268397 |  4 |   0.1453268 |
 
-df.Es<-as.data.frame(scale(df.E[,c(8:19)]))
-df.E2<-cbind(df.E[,c(1:7, 20, 21)], df.Es)
-
-df.NAlls<-as.data.frame(scale(df.NAll[,c(8:19)]))
-df.NAll2<-cbind(df.NAll[,c(1:7, 20, 21)], df.NAlls)
-```
-
-\#Model effects covar.lmeS \<- lmer(resid.HW \~ Species*Competitorm2 +
-Species*Fish.Densitym2 +  
-Species*Shoot.Countm2 + Species*Prey.CPU + SamplingRound + (1|FM\_Name),
-data=df.S2) View(summary(covar.lmeS)$coef) Anova(covar.lmeS)
-
-sc.comp\<- ggplot()+ geom\_smooth(data=df.S2, aes(x = Competitorm2, y =
-resid.HW, color=Species), method=‘lm’, se = T) + \# geom\_point(data =
-df.S2, aes(x= Competitorm2, y = resid.HW, color = Species))+ \#
-coord\_cartesian(ylim = c(-0.25,0.25))+ scale\_color\_manual(values =
-c(“\#e41a1c”, ‘\#80b1d3’, ‘\#4daf4a’, ‘\#984ea3’,‘\#ff7f00’))+
-scale\_y\_continuous(‘Residual HW’) + scale\_x\_continuous(‘Competitor
-density (m3)’)+ facet\_grid(\~SamplingRound)+ guides(color=FALSE)
-
-sc.fish\<- ggplot()+ geom\_smooth(data=df.S2, aes(x = Fish.Densitym2, y
-= resid.HW, color=Species), method=‘lm’, se = T) + \# geom\_point(data =
-df.S2, aes(x= Competitorm2, y = resid.HW, color = Species))+ \#
-coord\_cartesian(ylim = c(-0.25,0.25))+ scale\_color\_manual(values =
-c(“\#e41a1c”, ‘\#80b1d3’, ‘\#4daf4a’, ‘\#984ea3’,‘\#ff7f00’))+
-scale\_y\_continuous(‘Residual HW’) + scale\_x\_continuous(‘Fish density
-(m3)’)+ facet\_grid(\~SamplingRound)+ guides(color=FALSE)
-
-covar.lmeN \<- lmer(resid.HW \~ Species*Competitorm2 +
-Species*Fish.Densitym2 +  
-Species*Shoot.Countm2 + Species*Prey.CPU + SamplingRound + (1|FM\_Name),
-data=df.N2) summary(covar.lmeN) Anova(covar.lmeN)
-
-\#Insufficient ENAS, ENMI, and ENTR to include covar.lmeE \<-
-lmer(resid.HW \~ Species*Competitorm2 + Species*Fish.Densitym2 +  
-Species*Shoot.Countm2 + Species*Prey.CPU +SamplingRound + (1|FM\_Name),
-data=df.E2) summary(covar.lmeE) Anova(covar.lmeE)
-
-\#Combine both northern samples \#No collinearity problems.
-covar.lmeAllN \<- lmer(resid.HW \~ Species*Competitorm2 +
-Species*Fish.Densitym2 +  
-Species*Shoot.Countm2 + Species*Prey.CPU +SamplingRound + (1|FM\_Name),
-data=df.NAll2) summary(covar.lmeAllN)
-\#View(summary(covar.lmeAllN)$coef)
-Anova(covar.lmeAllN)
-
-\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
-
-ggplot(data=df.S2, aes(y=resid.HW, x=Fish.Densitym2, colour=Species,
-group=Species))+ geom\_smooth(method=‘lm’, se=F)+
-facet\_grid(\~SamplingRound)
-
-ggplot(data=df.subS, aes(y=Resid.L.HW, x=Enallagma, colour=Species,
-group=Species))+ geom\_smooth(method=lm, se=F)
-
-ggplot(data=df.subS, aes(y=Resid.L.HW, x=Prey.Count))+
-geom\_smooth(method=lm, se=T)
-
-ggplot(data=df.subS, aes(y=Resid.L.HW, x=Per.Coverage))+
-geom\_smooth(method=lm, se=T)+ylab(‘Relative HW’)
-
-ggplot(data=df.N2, aes(y=resid.HW, x=Fish.Densitym2, colour=Species,
-group=Species))+ geom\_smooth(method=‘lm’, se=F)
-
-\#Growth p \<- ggplot(grow, aes(Species, HWGrowth, colour=FM\_Name)) +
-geom\_point()
+![](Analysis_Markdown_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->![](Analysis_Markdown_files/figure-gfm/unnamed-chunk-12-2.png)<!-- -->![](Analysis_Markdown_files/figure-gfm/unnamed-chunk-12-3.png)<!-- -->![](Analysis_Markdown_files/figure-gfm/unnamed-chunk-12-4.png)<!-- -->![](Analysis_Markdown_files/figure-gfm/unnamed-chunk-12-5.png)<!-- -->![](Analysis_Markdown_files/figure-gfm/unnamed-chunk-12-6.png)<!-- -->![](Analysis_Markdown_files/figure-gfm/unnamed-chunk-12-7.png)<!-- -->
